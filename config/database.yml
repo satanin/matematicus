@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: matematicus_production
-  username: matematicus
+  username: <%= ENV['MATEMATICUS_DATABASE_USERNAME'] %>
   password: <%= ENV['MATEMATICUS_DATABASE_PASSWORD'] %>
