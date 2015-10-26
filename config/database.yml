@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: matematicus_production
+  database: <%= ENV['MATEMATICUS_DATABASE_NAME'] %>
   username: <%= ENV['MATEMATICUS_DATABASE_USERNAME'] %>
   password: <%= ENV['MATEMATICUS_DATABASE_PASSWORD'] %>
