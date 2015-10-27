@@ -1,0 +1,10 @@
+<div>
+  <% unless user_signed_in? %>
+    <%= link_to t(:signin, scope: :users), new_user_registration_path %>
+    <%= link_to t(:login, scope: :users), new_user_session_path %>
+  <% else %>
+     <%= current_user.email %>
+    <%= link_to t(:signout, scope: :users), destroy_user_session_path, :method => :delete %>
+  <% end %>
+
+</div>
