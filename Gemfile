@@ -35,7 +35,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
+# Environment variable manager
 gem "figaro"
+
+# Omniauth strategies
+gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
