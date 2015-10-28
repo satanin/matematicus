@@ -28,4 +28,5 @@ en:
     logout: "Log out"
     signout: "Sign Out"
     facebook_login: "Sign in with Facebook"
+    google_login: "Sign in with Google"
     profile: "User Profile"
