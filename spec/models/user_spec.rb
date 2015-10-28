@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before :each do
-    @user = User.new(email: "user@email.com", password: "12345678", username: "test1")
+    @user = build(:user)
   end
 
   it "cannot be creted without username" do
