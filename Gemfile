@@ -33,6 +33,8 @@ gem 'rails_12factor'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
 end
 
 # Environment variable manager
