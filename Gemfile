@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'rails', '4.1.13'
+gem 'rails'
 gem 'pg'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sass-rails', '~> 5.0.3'
-gem 'foundation-rails', '~> 5.5.0.0'
+gem 'sass-rails'
+gem 'foundation-rails'
 
 gem "figaro"
 
