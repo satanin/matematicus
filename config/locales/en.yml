@@ -30,3 +30,10 @@ en:
     facebook_login: "Sign in with Facebook"
     google_login: "Sign in with Google"
     profile: "User Profile"
+
+  questions:
+    reply: "Reply"
+    create: "Create question"
+    myquestions: "My questions"
+    new: "New Question"
+    created: "Question, successfully created"

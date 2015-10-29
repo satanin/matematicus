@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.text :title
       t.text :body
       t.integer :times_viewed, default: 0
-      t.references :user, index: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps
     end

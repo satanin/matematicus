@@ -6,7 +6,9 @@
     <%= link_to t(:google_login, scope: :users), user_omniauth_authorize_path(:google_oauth2) %>
   <% else %>
      <%= current_user.email %>
-    <%= link_to t(:signout, scope: :users), destroy_user_session_path, :method => :delete %>
+    <%= link_to t(:signout, scope: :users), destroy_user_session_path, method: :delete %>
+    <%= link_to t(:myquestions, scope: :questions), user_questions_path(current_user) %>
+    <%= link_to t(:create, scope: :questions), new_user_question_path(current_user) %>
   <% end %>
 
 </div>
