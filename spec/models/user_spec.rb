@@ -51,4 +51,9 @@ RSpec.describe User, type: :model do
       expect(@user.save).to be(false)
     end
   end
+
+  it "can edit his profile data" do
+    params= { username: "paquito" }
+    expect(@user.update_attributes(params)).to be(true)
+  end
 end

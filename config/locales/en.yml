@@ -30,6 +30,7 @@ en:
     facebook_login: "Sign in with Facebook"
     google_login: "Sign in with Google"
     profile: "User Profile"
+    minimum_password_length: "Password must be at least 8 characters"
 
   questions:
     reply: "Reply"
