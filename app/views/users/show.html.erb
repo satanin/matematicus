@@ -3,3 +3,5 @@
 </div>
 <%= @user.email %>
 <%= @user.username %>
+
+<%= link_to t(:edit, scope: :users),edit_user_path(@user) %>
