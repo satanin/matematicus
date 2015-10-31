@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-    resources :questions
+    resources :questions do
+      resources :answers
+    end
+  end
+
+  resources :questions do
+    resources :answers
   end
 
   # Example of regular route:

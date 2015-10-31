@@ -2,13 +2,21 @@
   <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
   <div class="large-10 columns">
     <div class="Question-Title">
-    <%= question.title %>
+    <%= link_to question.title, question_path(question) %>
     </div>
     <p><strong><%= question.user.username %> <%= t(:said) %>:</strong> <%= question.body %></p>
     <ul class="inline-list">
-      <li><a href=""><%= link_to t(:reply, scope: :questions) %></a></li>
+      <li><a href=""><%= link_to t(:reply, scope: :questions), new_user_question_answer_path(question.user.id, question.id) %></a></li>
     </ul>
   </div>
 </div>
+<% unless request.env['PATH_INFO'] == "/" %>
+  <div>
+    <%= t(:answers, scope: :questions) %>
+  </div>
+  <div>
+    <%= render question.answers %>
+  </div>
+<% end %>
 
 <hr/>
