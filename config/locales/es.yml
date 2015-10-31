@@ -39,3 +39,11 @@ es:
     new: "Nueva Pregunta"
     created: "Pregunta creada correctamente"
     answers: "Respuestas a esta pregunta"
+    comment: "Comentar esta pregunta"
+    comments: "Comments"
+
+  answers:
+
+  comments:
+    new: "Nuevo comentario"
+    by: "por"

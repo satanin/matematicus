@@ -1,0 +1,4 @@
+<hr>
+<%= comment.body %><p>
+<%= t(:by, scope: :comments) + " " + comment.user.username %>
+<%= comment.created_at.to_date %>

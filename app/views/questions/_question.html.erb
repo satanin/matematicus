@@ -6,11 +6,22 @@
     </div>
     <p><strong><%= question.user.username %> <%= t(:said) %>:</strong> <%= question.body %></p>
     <ul class="inline-list">
-      <li><a href=""><%= link_to t(:reply, scope: :questions), new_user_question_answer_path(question.user.id, question.id) %></a></li>
+      <li>
+        <%= link_to t(:comment, scope: :questions), new_question_comment_path(question.id) %>
+      </li>
+      <li>
+        <%= link_to t(:reply, scope: :questions), new_question_answer_path(question.id) %>
+      </li>
     </ul>
   </div>
 </div>
 <% unless request.env['PATH_INFO'] == "/" %>
+  <div>
+    <div>
+      <%= t(:comments, scope: :questions) %>
+    </div>
+    <%= render question.comments %>
+  </div>
   <div>
     <%= t(:answers, scope: :questions) %>
   </div>

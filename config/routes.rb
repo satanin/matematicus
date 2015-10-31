@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'welcome/index'
 
@@ -9,13 +10,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-    resources :questions do
-      resources :answers
-    end
+    resources :questions
   end
 
   resources :questions do
-    resources :answers
+    resources :comments
+    resources :answers do
+      resources :comments
+    end
   end
 
   # Example of regular route:

@@ -39,3 +39,11 @@ en:
     new: "New Question"
     created: "Question, successfully created"
     answers: "Answers to this question"
+    comment: "Coment this question"
+    comments: "Comments"
+
+  answers:
+
+  comments:
+    new: "New Comment"
+    by: "by"

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new]
   before_action :set_user, only: [:new, :create, :destroy]
 
   def index
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
     @question.user_id = @user.id
 
     if @question.save
-      redirect_to user_question_path(@user,@question), notice: "#{t(:created, scope: :questions)}"
+      redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
     else
       render :new
     end
@@ -34,6 +34,6 @@ class QuestionsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 end

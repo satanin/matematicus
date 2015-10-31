@@ -5,3 +5,5 @@
     <p><strong><%= answer.user.username %> <%= t(:said) %>:</strong> <%= answer.body %></p>
   </div>
 </div>
+<%= link_to t(:comment, scope: :answer), new_question_answer_comment_path(answer.question.id, answer.id) %>
+<%= render answer.comments %>

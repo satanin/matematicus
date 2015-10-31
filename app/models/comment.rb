@@ -1,10 +1,9 @@
-class Answer < Post
+class Comment < Post
   belongs_to :user
   belongs_to :question
-  has_many :comments
+  belongs_to :answer
 
   validates :user_id, presence: true
-  validates :question_id, presence: true
   validates :body, presence: true
 
 end
