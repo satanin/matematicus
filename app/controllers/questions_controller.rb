@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.update_attributes(times_viewed: @question.times_viewed +=1 )
+    @answers = @question.answers
   end
 
   def new
