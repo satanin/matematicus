@@ -69,12 +69,3 @@ FactoryGirl.define do
   	user
   end
 end
-
-#FactoryGirl.define do
-#  factory :commentanswer do
-#  	type "Comment"
-#  	body Faker::Lorem.characters(300)
-#  	answer
-#  	user
-#  end
-#end

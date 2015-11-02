@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_user
 
   def show
-    @user = current_user
+    if params[:id].to_i != current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
-
     result = @user.update_attributes(user_params)
 
     if result
@@ -27,5 +27,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username)
+  end
+
+  def set_user
+    @user = current_user
   end
 end
