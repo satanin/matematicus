@@ -12,6 +12,9 @@
       <li>
         <%= link_to t(:reply, scope: :questions), new_question_answer_path(question.id) %>
       </li>
+      <li>
+        <%= link_to t(:edit, scope: :question), edit_question_path(@question) %>
+      </li>  
     </ul>
   </div>
 </div>

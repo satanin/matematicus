@@ -1,16 +1,27 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new]
+  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update]
   before_action :set_user, only: [:index, :new, :create, :destroy]
+  before_action :set_question, only: [:show, :edit, :update]
 
   def index
     @questions = @user.questions
   end
 
   def show
-    @question = Question.find(params[:id])
     @question.update_attributes(times_viewed: @question.times_viewed +=1 )
     @answers = @question.answers
   end
+
+  def edit
+  end
+
+  def update
+    if @question.update(post_params)
+      redirect_to question_path(@question), notice: "t(:successfully_edited, scope: :questions)"
+    else
+      render :edit
+    end
+  end 
 
   def new
     @question = Question.new
@@ -35,5 +46,9 @@ class QuestionsController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def set_question
+    @question = Question.find(params[:id])
   end
 end
