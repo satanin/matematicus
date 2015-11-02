@@ -14,4 +14,11 @@
     </ul>
   </div>
 </div>
-<%= render answer.comments %>
+<div class="row">
+  <div class="large-12 columns">
+    <%= t(:comments, scope: :answers) %>
+  </div> 
+  <div class="large-10 columns">
+    <%= render answer.comments %>
+  </div>
+</div>

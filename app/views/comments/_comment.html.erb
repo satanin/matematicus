@@ -6,11 +6,12 @@
       <%= comment.body %>
     </div>
     <div>
-      <%= t(:by, scope: :comments) + " " + comment.user.username %>, <%= comment.created_at.to_date %>
+      <%= t(:by, scope: :comments) + " " + comment.user.username %>, <%= l comment.created_at, format: :long   %>
     </div>
     <ul class="inline-list">
+
       <li>
-        <%= link_to t(:edit, scope: :comments), edit_question_comment_path(comment.question, comment) %>
+        <%= link_to t(:edit, scope: :comments), edit_question_comment_path(@question, comment) %>
       </li>
     </ul>
   </div>

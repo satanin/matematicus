@@ -18,19 +18,22 @@
     </ul>
   </div>
 </div>
-<% unless request.env['PATH_INFO'] == "/" %>
-  <div>
-    <div>
+<% unless request.env['PATH_INFO'] == root_path %>
+  <div class="row">
+    <div class="large-12 columns">
       <%= t(:comments, scope: :questions) %>
+    </div> 
+    <div class="large-10 columns">
+      <%= render question.comments %>
     </div>
-    <%= render question.comments %>
   </div>
-  <div>
-    <%= t(:answers, scope: :questions) %>
-  </div>
-  <div>
-    <%= render question.answers %>
-  </div>
+  <div class="row">
+    <div class="large-12 colums">
+      <%= t(:answers, scope: :questions) %>
+    </div>
+    <div class="large-12 colums">
+      <%= render question.answers %>
+    </div>
 <% end %>
 
 <hr/>

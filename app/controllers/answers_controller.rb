@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :update]
   before_action :answer_for_question, :set_user
   before_action :set_answer, only: [:edit, :update]
 
