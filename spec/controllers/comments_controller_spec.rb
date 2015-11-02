@@ -1,27 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  let (:question) { create(:question) }
-  let (:user) { create(:user) }
+  let (:user) { FactoryGirl.create(:user_with_questions, questions_count: 15) }
+  let (:user_commenting) { FactoryGirl.create(:user) }
 
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    user.confirm
-    sign_in user
+    user_commenting.confirm
+    sign_in user_commenting
   end
 
   context "when question has comments" do
 
     describe "GET #new" do
-      it "returns http success" do
-        get :new, question_id: question.id
+      xit "returns http success" do
+        get :create, id: user.questions.first
         expect(response).to have_http_status(:success)
       end
     end
 
     describe "GET #create" do
-      it "returns http success" do
-        get :create, question_id: question.id
+      xit "returns http success" do
+        post :create, id: comment.id
         expect(response).to have_http_status(:success)
       end
     end

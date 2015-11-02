@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    if request.env['PATH_INFO'].split("/").include?("answers")
+    unless params[:answer_id].nil?
       @answer = Answer.find(params[:answer_id])
       @environment_variables = [@question, @answer, @comment]
     else
