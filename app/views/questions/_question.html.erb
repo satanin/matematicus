@@ -7,13 +7,13 @@
     <p><strong><%= question.user.username %> <%= t(:said) %>:</strong> <%= question.body %></p>
     <ul class="inline-list">
       <li>
-        <%= link_to t(:comment, scope: :questions), new_question_comment_path(question.id) %>
+        <%= link_to t(:comment, scope: :questions), new_question_comment_path(question) %>
       </li>
       <li>
-        <%= link_to t(:reply, scope: :questions), new_question_answer_path(question.id) %>
+        <%= link_to t(:reply, scope: :questions), new_question_answer_path(question) %>
       </li>
       <li>
-        <%= link_to t(:edit, scope: :question), edit_question_path(@question) %>
+        <%= link_to t(:edit, scope: :questions), edit_question_path(question) %>
       </li>  
     </ul>
   </div>

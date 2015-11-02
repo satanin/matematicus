@@ -1,8 +1,21 @@
 class AnswersController < ApplicationController
   before_action :answer_for_question, :set_user
+  before_action :set_answer, only: [:edit, :update]
 
   def new
     @answer = Answer.new
+  end
+
+  def edit
+    
+  end
+
+  def update
+    if @answer.update(answer_params)
+      redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :answers)}"
+    else
+      render :edit
+    end
   end
 
   def create
@@ -29,5 +42,9 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body)
+  end
+
+  def set_answer
+    @answer = Answer.find(params[:id])
   end
 end

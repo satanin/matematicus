@@ -1,10 +1,22 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :destroy]
-  before_action :set_user, only: [:new, :create, :destroy]
-  before_action :set_question, only: [:new, :create, :destroy]
+  before_action :authenticate_user!, only:[:new, :edit, :create, :destroy]
+  before_action :set_user, only: [:new, :edit, :create, :destroy]
+  before_action :set_question, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update]
 
   def new
     @comment = Comment.new
+    unless params[:answer_id].nil?
+      @answer = Answer.find(params[:answer_id])
+      @environment_variables = [@question, @answer, @comment]
+      puts "*"*20,@environment_variables
+    else
+      @environment_variables = [@question,@comment]
+      puts "*"*20,@environment_variables
+    end
+  end
+
+  def edit
     unless params[:answer_id].nil?
       @answer = Answer.find(params[:answer_id])
       @environment_variables = [@question, @answer, @comment]
@@ -14,7 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(post_params)
+    @comment = Comment.new(comment_params)
     @comment.user_id = @user.id
 
     unless params[:answer_id].nil?
@@ -25,13 +37,18 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      redirect_to question_path(@question), notice: "#{t(:created, scope: :comments)}"
+      redirect_to question_path(@question), notice: "#{t(:successfully_created, scope: :comments)}"
     else
       render :new
     end
   end
 
   def update
+    if @comment.update(comment_params)
+      redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :comments)}"
+    else
+      render :edit
+    end
   end
 
   def delete
@@ -47,7 +64,11 @@ class CommentsController < ApplicationController
     @question = Question.find(params[:question_id])
   end
 
-  def post_params
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_params
     params.require(:comment).permit(:body)
   end
 end

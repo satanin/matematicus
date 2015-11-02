@@ -33,7 +33,7 @@ es:
     minimum_password_length: "La contraseña debe tener al menos 8 carácteres"
 
   questions:
-    reply: "Responder"
+    reply: "Responder pregunta"
     create: "Preguntar"
     myquestions: "Mis Preguntas"
     new: "Nueva Pregunta"
@@ -41,8 +41,13 @@ es:
     answers: "Respuestas a esta pregunta"
     comment: "Comentar esta pregunta"
     comments: "Comments"
+    edit: "Editar pregunta"
 
   answers:
+    sucessfully_edited: "Respuesta editada correctamente"
+    sucessfully_created: "Respuesta creada correctamente"
+    edit: "Editar respuesta"
+    comment: "Comentar esta respuesta"
 
   comments:
     new: "Nuevo comentario"
