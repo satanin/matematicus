@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mathjax 'mathjax'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
