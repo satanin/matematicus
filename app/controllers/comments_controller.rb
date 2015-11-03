@@ -16,12 +16,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = @user.id
+    @comment.question_id = @question.id
 
     unless params[:answer_id].nil?
       @answer = Answer.find(params[:answer_id])
       @comment.answer_id = @answer.id
-    else
-      @comment.question_id = @question.id
+      @comment.question_id = nil
     end
 
     if @comment.save
