@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   def show
     @question.update_attributes(times_viewed: @question.times_viewed +=1 )
     @answers = @question.answers
+    @answer = Answer.new
   end
 
   def edit

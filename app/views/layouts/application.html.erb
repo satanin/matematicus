@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
     <title><%= content_for?(:title) ? yield(:title) : ENV['APP_NAME'] %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
   </head>
 
   <body>
@@ -28,6 +30,15 @@
        inlineMath: [ ['$','$'] ],
        processEscapes: true
      }
+    });
+  </script>
+  <script>
+    $('#myTabs').on('toggled', function (event, tab) {
+      var preview = $('#MathInput').val();
+      console.log(preview);
+      preview = preview.length ? preview : 'No Comment provided'
+      $('#preview_pane').html(preview)
+      MathJax.Hub.Typeset();
     });
   </script>
   <%= mathjax_tag %>

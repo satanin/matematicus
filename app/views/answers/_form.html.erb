@@ -1,5 +1,25 @@
-<%= form_for ([@question,@answer]) do |f| %>
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
-<% end %>
+<ul class="tabs" data-tab="" id="myTabs">
+  <li class="tab-title active">
+    <a href="#comment_pane">
+      <%= t(:answer, scope: :questions) %>
+    </a>
+  </li>
+  <li class="tab-title">
+    <a href="#preview_pane">
+      <%= t(:preview, scope: :answers) %>
+    </a>
+  </li>
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="comment_pane">
+    <%= form_for ([@question,@answer]) do |f| %>
+      <%= f.label :body %>
+      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+  <div class="content" id="preview_pane">
+  <div class="box" id="box" style="visibility:hidden">
+    <div id="MathOutput" class="output">` `</div>
+  </div>
+</div>
