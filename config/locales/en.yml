@@ -47,3 +47,4 @@ en:
   comments:
     new: "New Comment"
     by: "by"
+    successfully_created: "Comment successfully created"

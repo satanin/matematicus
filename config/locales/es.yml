@@ -52,6 +52,7 @@ es:
   comments:
     new: "Nuevo comentario"
     by: "por"
+    successfully_created: "Comentario creado con éxito"
 
   date:
     abbr_day_names:

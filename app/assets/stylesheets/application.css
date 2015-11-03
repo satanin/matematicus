@@ -15,3 +15,16 @@
  *= require foundation_and_overrides
 
  */
+
+#notice {
+  background-color: #C3FF91;
+  font-weight: 700;
+  color: #44731E;
+
+}
+
+#alert {
+  background-color: #FF6775;
+  font-weight: 700;
+  color: #85363D;
+}
