@@ -6,21 +6,11 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    unless params[:answer_id].nil?
-      @answer = Answer.find(params[:answer_id])
-      @environment_variables = [@question, @answer, @comment]
-    else
-      @environment_variables = [@question,@comment]
-    end
+    set_environment
   end
 
   def edit
-    unless params[:answer_id].nil?
-      @answer = Answer.find(params[:answer_id])
-      @environment_variables = [@question, @answer, @comment]
-    else
-      @environment_variables = [@question,@comment]
-    end
+    set_environment
   end
 
   def create
@@ -64,6 +54,14 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def set_environment
+    @environment_variables = [@question,@comment]
+    unless params[:answer_id].nil?
+      @answer = Answer.find(params[:answer_id])
+      @environment_variables = [@question, @answer, @comment]
+    end
   end
 
   def comment_params
