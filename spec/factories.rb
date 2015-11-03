@@ -29,6 +29,15 @@ FactoryGirl.define do
         create_list(:question, evaluator.questions_count, user: user)
       end
     end
+    factory :user_with_answers do
+      transient do
+        answers_count 5
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:answer, evaluator.answers_count, user: user)
+      end
+    end
   end
 end
 

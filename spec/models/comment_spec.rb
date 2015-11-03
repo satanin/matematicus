@@ -5,7 +5,7 @@
 require 'rails_helper'
 require 'faker'
 
-RSpec.describe Answer, type: :model do
+RSpec.describe Comment, type: :model do
   let(:comment) { create(:comment) }
   let(:question) { create(:question) }
   let(:user) { create(:user) }

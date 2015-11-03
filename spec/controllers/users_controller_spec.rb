@@ -42,7 +42,7 @@ RSpec.describe UsersController, type: :controller do
       user.confirm
       sign_in user
     end
-    
+
     describe "trying to see his profile" do
 
       it "can access to his profile" do
@@ -55,8 +55,8 @@ RSpec.describe UsersController, type: :controller do
 
       it "can edit his profile" do
         get :edit, id: user.id
-        
-        expect(response.status).to be 200 
+
+        expect(response.status).to be 200
 
         put :update, id: user.id, user: { username: 'Test'}
 
@@ -66,7 +66,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     describe "trying to see other users private profile" do
-      
+
       it "cannot see other users profile" do
         get :show, id: another_user.id
 
