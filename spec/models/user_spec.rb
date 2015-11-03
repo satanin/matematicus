@@ -5,17 +5,17 @@ RSpec.describe User, type: :model do
     @user = build(:user)
   end
 
-  it "cannot be creted without username" do
+  it "cannot be created without username" do
     @user.username = nil
     expect(@user.save).to be(false)
   end
 
-  it "cannot be creted without email" do
+  it "cannot be created without email" do
     @user.email = nil
     expect(@user.save).to be(false)
   end
 
-  it "cannot be creted without password" do
+  it "cannot be created without password" do
     @user.password = nil
     expect(@user.save).to be(false)
   end

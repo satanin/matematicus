@@ -37,6 +37,7 @@ RSpec.describe UsersController, type: :controller do
     let(:user) { create(:user) }
     let(:another_user) { create(:user) }
 
+
     before do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user.confirm
@@ -62,6 +63,7 @@ RSpec.describe UsersController, type: :controller do
 
         expect(response.status).to eq(302)
         expect(response).to redirect_to user_path(user)
+        expect(assigns(:user).username).to eq 'Test'
       end
     end
 

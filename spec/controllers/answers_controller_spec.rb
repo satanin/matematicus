@@ -21,6 +21,7 @@ RSpec.describe AnswersController, type: :controller do
     let(:user_answering)  { create(:user_with_answers, answers_count: 15) }
     let(:question) { create(:question) }
     let(:answer) { build(:answer) }
+    let(:existing_answer) { create(:answer) }
 
     before do
       @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -48,7 +49,13 @@ RSpec.describe AnswersController, type: :controller do
       expect(response).to redirect_to question_path(assigns(:question))
       expect(assigns(:answer).body).to eq "This is the new body"
     end
+
+    it "can edit an existing answer" do
+      put :update, question_id: question.id, id: existing_answer.id, answer: { body: "This is the new question body" }
+
+      expect(response.status).to eq 302
+      expect(response).to redirect_to question_path(question)
+      expect(assigns(:answer).body).to eq "This is the new question body"
+    end
   end
-
-
 end
