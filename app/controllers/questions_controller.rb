@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
-  end 
+  end
 
   def new
     @question = Question.new

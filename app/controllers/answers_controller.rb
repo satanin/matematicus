@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
 
     if @answer.save
-      redirect_to user_question_path(@user,@question)
+      redirect_to question_path(@question)
     else
       render :new
     end

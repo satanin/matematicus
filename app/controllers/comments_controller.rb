@@ -9,10 +9,8 @@ class CommentsController < ApplicationController
     unless params[:answer_id].nil?
       @answer = Answer.find(params[:answer_id])
       @environment_variables = [@question, @answer, @comment]
-      puts "*"*20,@environment_variables
     else
       @environment_variables = [@question,@comment]
-      puts "*"*20,@environment_variables
     end
   end
 

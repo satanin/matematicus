@@ -15,5 +15,4 @@ class Comment < Post
   def for_answer?
     self.question_id.nil?
   end
-
 end
