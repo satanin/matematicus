@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question.update_attributes(times_viewed: @question.times_viewed +=1 )
+    @question.increase_views
     @answers = @question.answers
     @answer = Answer.new
   end
@@ -17,11 +17,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(post_params)
-      redirect_to question_path(@question), notice: "t(:successfully_edited, scope: :questions)"
-    else
-      render :edit
-    end
+    @question.update!(post_params)
+    redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :questions)}"
+
+    rescue Exception
+    render :edit
   end
 
   def new
@@ -32,11 +32,11 @@ class QuestionsController < ApplicationController
     @question = Question.new(post_params)
     @question.user_id = @user.id
 
-    if @question.save
-      redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
-    else
-      render :new
-    end
+    @question.save!
+    redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
+
+    rescue Exception
+    render :new
   end
 
   private

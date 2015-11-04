@@ -28,9 +28,4 @@ RSpec.describe Answer, type: :model do
     expect(answer.save).to be(false)
   end
 
-  it "must be a Post child"  do
-    answer = Answer.new
-    expect(answer.class.superclass.to_s).to eq "Post"
-  end
-
 end

@@ -4,23 +4,18 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    if params[:id].to_i != current_user.id
-      redirect_to user_path(current_user.id)
-    end
+    redirect_to user_path(current_user.id) if wrong_profile?
   end
 
   def edit
   end
 
   def update
-    result = @user.update_attributes(user_params)
+    @user.update_attributes!(user_params)
+    redirect_to  user_path(@user), notice: "#{t(:updated, scope: :users)}"
 
-    if result
-      redirect_to  user_path(@user), notice: "#{t(:updated, scope: :users)}"
-    else
-      render :edit
-    end
-
+    rescue Exception
+    render :edit
   end
 
   private
@@ -31,5 +26,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def wrong_profile?
+    params[:id].to_i != current_user.id
   end
 end

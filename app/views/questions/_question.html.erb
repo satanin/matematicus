@@ -7,7 +7,7 @@
     <p><strong><%= question.user.username %> <%= t(:said) %>:</strong> <%= question.body %></p>
     <ul class="inline-list">
       <li>
-        <%= link_to t(:comment, scope: :questions), new_question_comment_path(question) %>
+        <%= link_to t(:comment, scope: :questions), new_question_question_comment_path(question) %>
       </li>
       <li>
         <%= link_to t(:reply, scope: :questions), new_question_answer_path(question) %>
@@ -24,7 +24,7 @@
       <%= t(:comments, scope: :questions) %>
     </div>
     <div class="large-10 columns">
-      <%= render question.comments %>
+      <%= render question.question_comments %>
     </div>
   </div>
   <div class="row">

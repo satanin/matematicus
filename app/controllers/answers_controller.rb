@@ -12,11 +12,10 @@ class AnswersController < ApplicationController
   end
 
   def update
-    if @answer.update(answer_params)
-      redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :answers)}"
-    else
-      render :edit
-    end
+    @answer.update!(answer_params)
+    redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :answers)}"
+    rescue Exception
+    render :edit
   end
 
   def create
@@ -24,17 +23,17 @@ class AnswersController < ApplicationController
     @answer.user_id = @user.id
     @answer.question_id = @question.id
 
-    if @answer.save
-      redirect_to question_path(@question)
-    else
-      render :new
-    end
+    @answer.save!
+    redirect_to question_path(@question)
+
+    rescue Exception
+    render :new
   end
 
 
   private
   def answer_for_question
-    @question = Post.find(params[:question_id])
+    @question = Question.find(params[:question_id])
   end
 
   def set_user

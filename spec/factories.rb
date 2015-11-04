@@ -41,15 +41,6 @@ FactoryGirl.define do
   end
 end
 
-FactoryGirl.define do
-  factory :post do
-    title "MyText"
-	body "MyText"
-	times_viewed 1
-	type ""
-	user
-  end
-end
 
 FactoryGirl.define do
   factory :question do
@@ -62,8 +53,7 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :comment do
-  	type "Comment"
+  factory :answer do
   	body Faker::Lorem.characters(300)
   	question
   	user
@@ -71,10 +61,18 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :answer do
-  	type "Answer"
-  	body Faker::Lorem.characters(300)
-  	question
-  	user
+  factory :question_comment do
+    body Faker::Lorem.characters(300)
+    question
+    user
   end
 end
+
+FactoryGirl.define do
+  factory :answer_comment do
+    body Faker::Lorem.characters(300)
+    answer
+    user
+  end
+end
+

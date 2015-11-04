@@ -22,16 +22,11 @@ RSpec.describe Question, type: :model do
   	question = Question.new(title: "hola mundo", body: "1+1=2?")
   	question.save
   	expect(question.times_viewed).to be(0)
-  end  
+  end
 
   it "must belong to a user" do
   	question = Question.new(title: "hola mundo", body: "1+1=2?", user_id: nil)
   	expect(question.save).to be(false)
-  end
-
-  it "must be a Post child"  do
-    question = Question.new
-    expect(question.class.superclass.to_s).to eq "Post"
   end
 
 end

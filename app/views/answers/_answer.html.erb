@@ -9,7 +9,7 @@
         <%= link_to t(:edit, scope: :answers), edit_question_answer_path(answer.question,answer) %>
       </li>
       <li>
-        <%= link_to t(:comment, scope: :answers), new_question_answer_comment_path(answer.question, answer) %>
+        <%= link_to t(:comment, scope: :answers), new_question_answer_answer_comment_path(answer.question, answer) %>
       </li>
     </ul>
   </div>
@@ -19,6 +19,6 @@
     <%= t(:comments, scope: :answers) %>
   </div> 
   <div class="large-10 columns">
-    <%= render answer.comments %>
+    <%= render answer.answer_comments %>
   </div>
 </div>

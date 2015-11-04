@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
-    resources :comments
+    resources :question_comments
     resources :answers do
-      resources :comments
+      resources :answer_comments
     end
   end
 
