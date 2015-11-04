@@ -1,9 +1,6 @@
 ## Customize deployment commands
 deployment:
-  production:
+  staging:
     branch: master
     heroku:
       appname: matematicus
-    database:
-      - bundle exec rake db:drop
-      - bundle exec rake db:setup
