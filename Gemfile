@@ -7,7 +7,6 @@ gem 'figaro'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'sass-rails'
 gem 'foundation-rails'
 
