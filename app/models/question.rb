@@ -13,4 +13,8 @@ class Question < ActiveRecord::Base
     self.save
   end
 
+  def can_be_edited_by? user
+    user.questions.map{|q| q[:id] }.include?(self.id)
+  end
+
 end
