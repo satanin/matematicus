@@ -7,5 +7,5 @@ deployment:
 
 database:
   override:
-    - cp config/database.yml.ci config/database.yml
-    - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace
+    - bundle exec rake db:drop
+    - bundle exec rake db:setup
