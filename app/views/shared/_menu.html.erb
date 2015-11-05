@@ -1,7 +1,7 @@
 <div>
   <%= link_to t(:home), root_path %>
   <% unless user_signed_in? %>
-    <%= link_to t(:signin, scope: :users), new_user_registration_path %>
+    <%= link_to t(:signup, scope: :users), new_user_registration_path %>
     <%= link_to t(:login, scope: :users), new_user_session_path %>
     <%= link_to t(:facebook_login, scope: :users), user_omniauth_authorize_path(:facebook) %>
     <%= link_to t(:google_login, scope: :users), user_omniauth_authorize_path(:google_oauth2) %>

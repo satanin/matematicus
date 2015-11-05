@@ -22,7 +22,7 @@
 es:
   hello: "Hola Mundo"
   users:
-    signin: "Iniciar Sesión"
+    signin: "Registrarse"
     signup: "Registrarse"
     login: "Iniciar Sesión"
     logout: "Cerrar Sesión"
