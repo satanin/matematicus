@@ -1,10 +1,12 @@
 ## Customize deployment commands
+test:
+  database:
+    override:
+      - cp config/database.yml.ci config/database.yml
+      - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace
+
 deployment:
   staging:
     branch: master
     heroku:
       appname: matematicus
-    database:
-      override:
-        - cp config/database.yml.ci config/database.yml
-        - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace
