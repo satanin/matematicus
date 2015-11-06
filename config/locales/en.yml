@@ -41,8 +41,10 @@ en:
     answers: "Answers to this question"
     comment: "Coment this question"
     comments: "Comments"
+    edit: "Edit question"
     successfully_edited: "Questiom successfully edited"
     successfully_created: "Questiom successfully created"
+    tags: "Tags"
 
   answers:
 

@@ -16,6 +16,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '~> 1.3.1'
 
 gem 'mathjax-rails'
+gem 'rails-jquery-autocomplete'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

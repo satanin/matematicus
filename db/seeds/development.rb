@@ -39,3 +39,23 @@ AnswerComment.create!(
   answer_id: 1,
   user_id: 1
   )
+
+Tag.create!(
+  name: "sumas",
+  description: "Operaciones relacionadas con sumas"
+  )
+
+Tag.create!(
+  name: "restas",
+  description: "Operaciones relacionadas con restas"
+  )
+
+Tag.create!(
+  name: "divisiones",
+  description: "Operaciones relacionadas con divisiones"
+  )
+
+Tag.create!(
+  name: "multiplicaciones",
+  description: "Operaciones relacionadas con multiplicaciones"
+  )

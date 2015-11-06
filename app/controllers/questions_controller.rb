@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  autocomplete :tag, :name, full: true
   before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update]
   before_action :set_user, only: [:index, :new, :create, :destroy]
   before_action :set_question, only: [:show, :edit, :update]
@@ -26,6 +27,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question_tag = QuestionTag.new
   end
 
   def create

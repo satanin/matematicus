@@ -44,6 +44,7 @@ es:
     edit: "Editar pregunta"
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
+    tags: "Tags"
 
   answers:
     sucessfully_edited: "Respuesta editada correctamente"

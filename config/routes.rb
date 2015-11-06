@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :question_comments
+    get :autocomplete_tag_name, :on => :collection
     resources :answers do
       resources :answer_comments
     end

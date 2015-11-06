@@ -16,5 +16,9 @@
   <%= f.text_field :title %>
   <%= f.label :body %>
   <%= f.text_area :body %>
+  <%= label :tag_name, t(:tags, scope: :questions) %>
+  <%= f.fields_for :question_tag, @question_tag do |q| -%>
+    <%= q.autocomplete_field :tag_id, autocomplete_tag_name_questions_path, 'data-delimiter' => ',', :multiple => true %>
+  <% end %>
   <%= f.submit class:"button" %>
 <% end %>
