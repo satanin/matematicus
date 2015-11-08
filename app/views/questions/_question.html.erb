@@ -1,25 +1,39 @@
 <div class="row">
-  <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
-  <div class="large-10 columns">
-    <div class="Question-Title">
-    <%= link_to question.title, question_path(question) %>
-    </div>
-    <p><strong><%= question.user.username %> <%= t(:said) %>:</strong> <%= question.body %></p>
-    <ul class="inline-list">
+  <div class="large-3 columns">
+    <ul class="inline-list text-center">
       <li>
-        <%= link_to t(:comment, scope: :questions), new_question_question_comment_path(question) %>
+        <span>Votos</span>
+        <p>1</p>
       </li>
       <li>
-        <%= link_to t(:reply, scope: :questions), new_question_answer_path(question) %>
-      </li>
-      <li>
-        <%= link_to t(:edit, scope: :questions), edit_question_path(question) %>
+        <span>Respuestas</span>
+        <p>2</p>
       </li>
     </ul>
+  </div>
+  <div class="large-9 columns">
+    <div class="Question-Title">
+      <h4>
+        <%= link_to question.title, question_path(question) %>
+      </h4>
+    </div>
+    <aside>
+      <ul class="inline-list">
+        <li>
+          <span>álgebra</span>
+        </li>
+        <li>
+          <span>matrices</span>
+        </li>
+      </ul>
+    </aside>
   </div>
 </div>
 <% unless request.env['PATH_INFO'] == root_path %>
   <div class="row">
+    <div class="large-12 columns">
+      <p><%= question.body %></p>
+    </div>
     <div class="large-12 columns">
       <%= t(:comments, scope: :questions) %>
     </div>
