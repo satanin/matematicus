@@ -1,15 +1,24 @@
-<div>
-  <%= link_to t(:home), root_path %>
-  <% unless user_signed_in? %>
-    <%= link_to t(:signup, scope: :users), new_user_registration_path %>
-    <%= link_to t(:login, scope: :users), new_user_session_path %>
-    <%= link_to t(:facebook_login, scope: :users), user_omniauth_authorize_path(:facebook) %>
-    <%= link_to t(:google_login, scope: :users), user_omniauth_authorize_path(:google_oauth2) %>
-  <% else %>
-     <%= link_to current_user.username, user_path(current_user) %>
-    <%= link_to t(:signout, scope: :users), destroy_user_session_path, method: :delete %>
-    <%= link_to t(:myquestions, scope: :questions), user_questions_path(current_user) %>
-    <%= link_to t(:create, scope: :questions), new_user_question_path(current_user) %>
-  <% end %>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">matematic.us</a></h1>
+    </li>
+  </ul>
 
-</div>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% unless user_signed_in? %>
+        <li><%= link_to t(:signup, scope: :users), new_user_registration_path %></li>
+        <li><%= link_to t(:login, scope: :users), new_user_session_path %></li>
+        <li><%= link_to t(:facebook_login, scope: :users), user_omniauth_authorize_path(:facebook) %></li>
+        <li><%= link_to t(:google_login, scope: :users), user_omniauth_authorize_path(:google_oauth2) %></li>
+      <% else %>
+        <li><%= link_to current_user.username, user_path(current_user) %></li>
+        <li><%= link_to t(:signout, scope: :users), destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t(:myquestions, scope: :questions), user_questions_path(current_user) %></li>
+        <li><%= link_to t(:create, scope: :questions), new_user_question_path(current_user) %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
