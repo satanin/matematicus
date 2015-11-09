@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   private
 
   def post_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, tag_ids:[])
   end
 
   def set_user
