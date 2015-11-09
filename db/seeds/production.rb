@@ -59,3 +59,13 @@ Answer.create!(
   question_id: 1,
   user_id: 2
   )
+
+
+Tag.create!(name: "sumas", description: "Preguntas relacionadas con sumas")
+Tag.create!(name: "restas", description: "Preguntas relacionadas con restas")
+Tag.create!(name: "multiplicaciones", description: "Preguntas relacionadas con multiplicaciones")
+Tag.create!(name: "derivadas", description: "Preguntas relacionadas con derivadas")
+Tag.create!(name: "sumas complejas", description: "Preguntas relacionadas con sumas complejas")
+Tag.create!(name: "restas difíciles", description: "Preguntas relacionadas con restas difíciles")
+Tag.create!(name: "divisiones", description: "Preguntas relacionadas con divisiones")
+Tag.create!(name: "integrales", description: "Preguntas relacionadas con integrales")

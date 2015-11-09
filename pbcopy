@@ -1,0 +1,52 @@
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+
+# Custom aliases
+alias ll='ls -FGlAhp' 
+alias brs="bin/rails"
+alias gitlog="git log --graph --pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitst="git status"
+alias gitcm="git commit -m"
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias redis-start='redis-server /usr/local/etc/redis.conf --daemonize yes'
+alias redis-stop='pkill -f redis-server'
+alias mongo-start='mongod --fork --config /usr/local/etc/mongod.conf > /dev/null'
+alias mongo-stop='pkill -f mongod'
+
+# Configuración del prompt
+
+parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ →\ \1/'
+}
+
+git_changes(){
+  if [[ $(git status 2> /dev/null | tail -n1) == "no changes added to commit (use \"git add\" and/or \"git commit -a\")" ]]; then
+    echo "[!]"
+  fi
+}
+
+psmongod(){
+  if [[ $(ps aux |grep "[m]ongod" |grep -o "[m]ongod ") == "mongod " ]]; then
+    echo "[ mongo ]"
+  fi
+}
+
+psredis(){
+  if [[ $(ps aux |grep "[rR]edis" |grep -o "[rR]edis-server ") == "redis-server " ]]; then
+    echo "[ redis ]"
+  fi
+}
+
+pspg(){
+ if [[ $(ps aux |grep "[pP]ostgres -D" |grep -o "[pP]ostgres ") == "postgres " ]]; then
+   echo "[ postgres ]"
+ fi
+}
+
+
+export PS1='|------------------------------------------------------------------
+|\[\e[1;30m\]\u\[\e[0m\]@\[\e[1;35m\]\h:\[\e[1;33m\]\w \[\e[1;35m\]$(parse_git_branch)\[\e[1;34m\] $(git_changes) \[\e[0;30m\]$(psmongod) $(psredis) $(pspg) \[\e[0m\]
+|\[\e[1;31m\]▹\[\e[1;32m\]▹\[\e[1;33m\]▹ \[\e[0m\]'
+
+eval "$(rbenv init -)"

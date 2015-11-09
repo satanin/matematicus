@@ -43,6 +43,7 @@ en:
     comments: "Comments"
     successfully_edited: "Questiom successfully edited"
     successfully_created: "Questiom successfully created"
+    select_tags: "Select appropiate tags for question"
 
   answers:
 

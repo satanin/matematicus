@@ -1,3 +1,10 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".tag-selector").select2({
+    });
+  })
+</script>
+
 <%= form_for ([@question]) do |f| %>
 <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -16,5 +23,11 @@
   <%= f.text_field :title %>
   <%= f.label :body %>
   <%= f.text_area :body %>
+  <div class="tags">
+    <% @question.tags.each do |t| %>
+      <%= t.name %>
+    <% end %>
+  </div>
+  <%= f.collection_select(:tag_ids,Tag.all,:id,:name,{},{ class:"tag-selector", multiple:"multiple", placeholder:"#{t(:select_tags, scope: :questions)}", value:""}) %>
   <%= f.submit class:"button" %>
 <% end %>

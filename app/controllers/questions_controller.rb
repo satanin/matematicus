@@ -17,7 +17,13 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update!(post_params)
+    puts "*"*20, question_params
+    @question_tag_ids = question_params[:tag_ids]
+    puts "*"*20, @question_tag_ids
+
+    @question.update!(question_params)
+    QuestionTag.associate_tags_to_question @question, @question_tag_ids
+
     redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :questions)}"
 
     rescue Exception
@@ -29,10 +35,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(post_params)
+    @question = Question.new(question_params)
     @question.user_id = @user.id
+    @question_tag_ids = post_params[:tag_ids]
 
     @question.save!
+    QuestionTag.associate_tags_to_question @question, @question_tag_ids
+
     redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
 
     rescue Exception
@@ -41,8 +50,8 @@ class QuestionsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:question).permit(:title, :body)
+  def question_params
+    params.require(:question).permit(:title, :body,  :tag_ids => [])
   end
 
   def set_user

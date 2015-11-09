@@ -1,3 +1,12 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.ui-autocomplete{
+  list-style: none;
+  border:1px solid;
+  width: 20%;
+  background-color: #E0E4E1;
+  padding: 5px 0px 5px 10px; 
+}
