@@ -12,11 +12,8 @@ FactoryGirl.define do
   end
 end
 
-# This will guess the User class
 FactoryGirl.define do
   factory :user do
-    #username Faker::Name.name
-    #email Faker::Internet.email
     username
     email
     password Faker::Internet.password(8)
@@ -40,39 +37,3 @@ FactoryGirl.define do
     end
   end
 end
-
-
-FactoryGirl.define do
-  factory :question do
-  	title Faker::Name.title
-  	body Faker::Lorem.characters(300)
-  	times_viewed Faker::Number.between(1, 1000)
-  	user_id Faker::Number.between(1, 1000)
-  	user
-  end
-end
-
-FactoryGirl.define do
-  factory :answer do
-  	body Faker::Lorem.characters(300)
-  	question
-  	user
-  end
-end
-
-FactoryGirl.define do
-  factory :question_comment do
-    body Faker::Lorem.characters(300)
-    question
-    user
-  end
-end
-
-FactoryGirl.define do
-  factory :answer_comment do
-    body Faker::Lorem.characters(300)
-    answer
-    user
-  end
-end
-
