@@ -11,7 +11,7 @@
     <ul class="inline-list">
 
       <li>
-        <%= link_to t(:edit, scope: :comments), edit_question_question_comment_path(@question, question_comment) %>
+        <%= link_to t(:edit, scope: :comments), edit_question_question_comment_path(question_comment.question, question_comment) %>
       </li>
     </ul>
   </div>

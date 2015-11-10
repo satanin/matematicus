@@ -2,12 +2,12 @@
   <div class="large-3 columns">
     <ul class="inline-list text-center">
       <li>
-        <span>Votos</span>
+        <span><%= t(:votes, scope: :questions) %></span>
         <p>1</p>
       </li>
       <li>
-        <span>Respuestas</span>
-        <p>2</p>
+        <span><%= t(:answers, scope: :questions) %></span>
+        <p><%= question.answers.count %></p>
       </li>
     </ul>
   </div>
@@ -24,7 +24,7 @@
     </aside>
   </div>
 </div>
-<% unless request.env['PATH_INFO'] == root_path %>
+<% unless outside_question_view %>
   <div class="row">
     <div class="large-12 columns">
       <p><%= question.body %></p>
@@ -38,7 +38,7 @@
   </div>
   <div class="row">
     <div class="large-12 colums">
-      <%= t(:answers, scope: :questions) %> : <%= @answers.count %>
+      <%= t(:answers, scope: :questions) %> : <%= question.answers.count %>
     </div>
     <div class="large-12 colums">
       <%= render question.answers %>

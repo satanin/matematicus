@@ -13,12 +13,14 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  get 'questions/tagged/:name' => 'questions#tagged', as: :tagged_questions
   resources :questions do
     resources :question_comments
     resources :answers do
       resources :answer_comments
     end
   end
+
 
   mathjax 'mathjax'
 

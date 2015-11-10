@@ -39,6 +39,11 @@ class QuestionsController < ApplicationController
     render :new
   end
 
+  def tagged
+    @tag = Tag.find_by(name: params[:name])
+    @questions = Question.tagged_with @tag
+  end
+
   private
 
   def post_params

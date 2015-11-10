@@ -16,11 +16,11 @@ User.create!(
   confirmation_sent_at: Time.now.utc
   )
 
-Question.create!(
+Question.new(
   title: "This is question one",
   body: "This is question's one body",
   user_id: 1
-  )
+  ).save(validate: false)
 
 QuestionComment.create!(
   body: "This is a comment for Question one.",

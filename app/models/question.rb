@@ -19,4 +19,8 @@ class Question < ActiveRecord::Base
     user.questions.map{|q| q[:id] }.include?(self.id)
   end
 
+  def self.tagged_with tag
+    Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
+  end
+
 end
