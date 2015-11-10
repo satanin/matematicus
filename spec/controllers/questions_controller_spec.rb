@@ -21,6 +21,7 @@ RSpec.describe QuestionsController, type: :controller do
     let(:another_user) { create(:user_with_questions, questions_count: 20)}
     let(:question) { build(:question) }
     let(:new_question) { create(:question)}
+    let(:tag) { create(:tag)}
 
     before do
       @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -69,13 +70,13 @@ RSpec.describe QuestionsController, type: :controller do
 
       describe "when is persisted" do
         it "responds with http redirection" do
-          post :create, question: { title: question.title, body: question.body, user_id: user.id }
+          post :create, question: { title: question.title, body: question.body, user_id: user.id, tag_ids: [ tag.id ] }
 
           expect(response.status).to be 302
         end
 
         it "can create new questions" do
-          post :create, question: { title: question.title, body: question.body, user_id: user.id }
+          post :create, question: { title: question.title, body: question.body, user_id: user.id, tag_ids: [ tag.id ] }
 
           expect(user.questions.count).to eq 16
           expect(response).to redirect_to question_path(assigns(:question))
