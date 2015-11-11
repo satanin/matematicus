@@ -57,6 +57,9 @@ es:
     by: "por"
     successfully_created: "Comentario creado con éxito"
 
+  tags:
+    invalid: "Etiqueta no válida"
+
   date:
     abbr_day_names:
     - dom

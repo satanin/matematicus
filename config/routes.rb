@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   end
 
   get 'questions/tagged/:name' => 'questions#tagged', as: :tagged_questions
-  resources :questions do
-    resources :question_comments
-    resources :answers do
-      resources :answer_comments
+  constraints(id: /\d+/) do
+    resources :questions do
+      resources :question_comments
+      resources :answers do
+        resources :answer_comments
+      end
     end
   end
 
@@ -72,4 +74,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get "*path", to: redirect('/')
 end

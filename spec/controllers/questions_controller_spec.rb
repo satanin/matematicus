@@ -16,6 +16,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   end
 
+
   context "When user is logged id" do
     let(:user) { create(:user_with_questions, questions_count: 15) }
     let(:another_user) { create(:user_with_questions, questions_count: 20)}
@@ -28,6 +29,16 @@ RSpec.describe QuestionsController, type: :controller do
       user.confirm
       another_user.confirm
       sign_in user
+    end
+
+    context "When supplied id is not valid" do
+
+      it "redirects to root path if supplied id is not a valid id" do
+        get :edit, id: 19999
+
+        expect(response).to redirect_to root_path
+      end
+
     end
 
     describe "GET #index" do
@@ -85,13 +96,19 @@ RSpec.describe QuestionsController, type: :controller do
 
       describe "when is not persisted" do
         it "responds with http success" do
-          post :create, question: { title: nil, body: question.body, user_id: user.id }
+          post :create, question: { title: nil }
 
           expect(response.status).to be 200
         end
 
-        it "cannot create new question" do
-          post :create, question: { title: nil, body: question.body, user_id: user.id }
+        it "cannot create new question without required field" do
+          post :create, question: { title: nil }
+
+          expect(assigns(:question).errors.size).to_not be 0
+        end
+
+        it "cannot create a question without tag" do
+          post :create, question: { title: "Hi", body: "Question", tag_ids: [] }
 
           expect(assigns(:question).errors.size).to_not be 0
         end
@@ -101,7 +118,7 @@ RSpec.describe QuestionsController, type: :controller do
     describe "GET #edit" do
 
       it "responds with http success" do
-        get :edit , id: new_question.id
+        get :edit, id: new_question.id
 
         expect(response.status).to eq 200
       end
@@ -139,6 +156,34 @@ RSpec.describe QuestionsController, type: :controller do
 
           expect(assigns(:question).errors.size).to_not be 0
         end
+
+        it "cannot update a question without tag" do
+          put :update, id: new_question.id, question: { title: "Title", body: "Question", tag_ids: [] }
+
+          expect(assigns(:question).errors.size).to_not be 0
+        end
+      end
+    end
+
+    describe "GET #tagged" do
+
+      it "responds with http success" do
+        get :tagged, name: tag.name
+
+        expect(response.status).to eq 200
+      end
+
+      it "renders tagged template" do
+        get :tagged, name: question.tags.first.name
+
+        expect(response).to render_template(:tagged)
+        expect(assigns(:questions).count).to be >0
+      end
+
+      it "redirects to root path if tag name isn't specified" do
+        get :tagged, name: "pericodelospalotes"
+
+        expect(response).to redirect_to root_path
       end
     end
   end

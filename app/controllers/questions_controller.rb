@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update]
   before_action :set_user, only: [:index, :new, :create, :destroy]
   before_action :set_question, only: [:show, :edit, :update]
+  before_action :set_tag, only: [:tagged]
 
   def index
     @questions = @user.questions
@@ -20,7 +21,7 @@ class QuestionsController < ApplicationController
     @question.update!(post_params)
     redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :questions)}"
 
-    rescue Exception
+  rescue Exception
     render :edit
   end
 
@@ -35,12 +36,11 @@ class QuestionsController < ApplicationController
     @question.save!
     redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
 
-    rescue Exception
+  rescue Exception
     render :new
   end
 
   def tagged
-    @tag = Tag.find_by(name: params[:name])
     @questions = Question.tagged_with @tag
   end
 
@@ -56,5 +56,14 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+
+  rescue Exception
+    redirect_to root_path, alert: "#{t(:invalid, scope: :questions)}" if @question.nil?
+  end
+
+  def set_tag
+    @tag = Tag.find_by(name: params[:name])
+
+    redirect_to root_path, alert: "#{t(:invalid, scope: :tags)}" if @tag.nil?
   end
 end
