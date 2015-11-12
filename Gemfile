@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'foundation-rails'
+gem 'font-awesome-rails'
 
 gem 'devise', '~> 3.5.2'
 gem 'omniauth-facebook'

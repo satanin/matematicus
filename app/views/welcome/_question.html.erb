@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="large-3 columns">
+    <ul class="inline-list text-center">
+      <li>
+        <span><%= t(:votes, scope: :questions) %></span>
+        <p>1</p>
+      </li>
+      <li>
+        <span><%= t(:answers, scope: :questions) %></span>
+        <p><%= question.answers.count %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="large-9 columns">
+    <div class="Question-Title">
+      <h4>
+        <%= link_to question.title, question_path(question) %>
+      </h4>
+    </div>
+    <aside>
+      <ul class="inline-list">
+        <%= render question.tags %>
+      </ul>
+    </aside>
+  </div>
+</div>
+<hr>
