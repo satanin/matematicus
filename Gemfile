@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'coffee-rails'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 

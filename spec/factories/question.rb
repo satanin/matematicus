@@ -16,5 +16,14 @@ FactoryGirl.define do
         create_list(:tag, evaluator.tags_count, question: question)
       end
     end
+    factory :question_with_votes do
+      transient do
+        votes_count 5
+      end
+
+      after(:create) do |question, evaluator|
+        create_list(:vote, evaluator.votes_count, question: question)
+      end
+    end
   end
 end

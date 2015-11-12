@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   has_many :answers
   has_many :question_comments
+  has_many :votes
   belongs_to :user
   has_and_belongs_to_many :tags
 
@@ -21,6 +22,11 @@ class Question < ActiveRecord::Base
 
   def self.tagged_with tag
     Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
+  end
+
+  def votes_value
+    votes_value = Vote.sum(:value)
+    votes_value.to_s
   end
 
 end

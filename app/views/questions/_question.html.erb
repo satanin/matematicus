@@ -15,6 +15,7 @@
 <div class="row">
   <div class="large-1 columns">
       <%= link_to "<i class='fa fa-chevron-up'></i>".html_safe, vote_up_path(question), remote: true %>
+        <h3><div id='votes-for-question-<%=question.id%>' ><%= @question.votes_value %></div></h3><br />
       <%= link_to "<i class='fa fa-chevron-down'></i>".html_safe, vote_down_path(question), remote: true %>
   </div>
   <div class="large-11 columns">

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :question_comments
   has_many :answers
   has_many :answer_comments
+  has_many :votes
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
