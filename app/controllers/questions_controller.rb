@@ -41,6 +41,7 @@ class QuestionsController < ApplicationController
   end
 
   def tagged
+    puts "*"*20, @tag.name
     @questions = Question.tagged_with @tag
   end
 

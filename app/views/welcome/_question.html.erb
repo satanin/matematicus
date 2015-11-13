@@ -3,7 +3,7 @@
     <ul class="inline-list text-center">
       <li>
         <span><%= t(:votes, scope: :questions) %></span>
-        <p>1</p>
+        <p><%= question.votes.count %></p>
       </li>
       <li>
         <span><%= t(:answers, scope: :questions) %></span>

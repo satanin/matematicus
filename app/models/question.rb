@@ -21,7 +21,9 @@ class Question < ActiveRecord::Base
   end
 
   def self.tagged_with tag
-    Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
+    questions = Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
+    puts "+++"*20, questions
+    questions
   end
 
   def votes_value
