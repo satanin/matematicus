@@ -11,9 +11,9 @@ module QuestionsHelper
     question.user == current_user
   end
 
-  def user_can_vote? current_user,question
-    user_vote = Vote.find_by(user_id: current_user.id, question_id: question.id)
-    puts "*"*20, user_vote.nil?
+  def user_can_vote? actual_user, question
+    user_vote = Vote.find_by(user_id: actual_user.id, question_id: question.id)
+    puts "="*20, user_vote.nil?
     user_vote.nil?
   end
 end
