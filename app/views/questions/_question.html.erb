@@ -1,46 +1,74 @@
 <div class="row">
-  <div class="large-12 columns">
-    <div class="Question-Title">
+  <div class="large-11 columns question-title">
+    <div class="question-title-text">
       <h4>
         <%= link_to question.title, question_path(question) %>
       </h4>
     </div>
-    <aside>
-      <ul class="inline-list">
+  </div>
+  <div class="large-1 columns question-title">
+    <div class="question-title-link">
+      <h4>
+        <%= edit_question_toggle current_user, question %>
+      </h4>
+    </div>
+  </div>
+</div>
+<div class="row question-row">
+  <% if true %>
+    <div class="large-1 columns">
+        <%= link_to "<i class='fa fa-chevron-up'></i>".html_safe, vote_up_question_path(question), remote: true %>
+          <h3><div id='votes-for-question-<%=question.id%>' ><%= question.votes_value %></div></h3><br />
+        <%= link_to "<i class='fa fa-chevron-down'></i>".html_safe, vote_down_question_path(question), remote: true %>
+    </div>
+  <% else %>
+    <div class="large-1 columns">
+        <i class='fa fa-chevron-up'></i>
+        <h3><div id='votes-for-question-<%=question.id%>' ><%= question.votes_value %></div></h3><br />
+        <i class='fa fa-chevron-down'></i>
+  </div>
+  <% end %>
+  <div class="large-11 columns question-body">
+    <%= question.body %>
+  </div>
+  <div class="large-11 columns question-info">
+    <div class="small-9 columns">
+      <ul class="inline-list question-tags">
+        <li class="tag">
+          <i class='fa fa-tags question-tags'></i>
+        </li>
         <%= render question.tags %>
       </ul>
-    </aside>
+    </div>
+    <div class="small-3 columns user-info">
+      <div class="question-time">
+        <%= t(:asked, scope: :questions, time: time_ago_in_words(question.created_at.to_datetime)) %>
+      </div>
+      <%= question.user.username %>
+    </div>
+    <div class="large-12 columns add-comment">
+      <%= link_to t(:add_comment, scope: :questions), new_question_question_comment_path(question) %>
+    </div>
   </div>
+  <% if question.question_comments.count >= 1 %>
+      <div class="large-1 columns">
+      </div>
+      <div class="large-11 columns">
+        <%= render question.question_comments %>
+      </div>
+  <% end %>
 </div>
 <div class="row">
-  <div class="large-1 columns">
-      <%= link_to "<i class='fa fa-chevron-up'></i>".html_safe, vote_up_question_path(question), remote: true %>
-        <h3><div id='votes-for-question-<%=question.id%>' ><%= question.votes_value %></div></h3><br />
-      <%= link_to "<i class='fa fa-chevron-down'></i>".html_safe, vote_down_question_path(question), remote: true %>
-  </div>
-  <div class="large-11 columns">
-    <p><%= question.body %></p>
-  </div>
-  <div class="large-12 columns">
-    <%= t(:comments, scope: :questions) %>
-  </div>
-  <div class="large-10 columns">
-    <%= render question.question_comments %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-12 colums">
+  <div class="large-12 colums question-count">
     <%= t(:answers, scope: :questions) %> : <%= question.answers.count %>
   </div>
-  <div class="large-12 colums">
-    <%= render question.answers %>
-  </div>
 </div>
-<hr />
+  <%= render question.answers %>
 <div class="row">
-  <div class="large-10 columns">
+  <hr />
+  <div class="large-12 columns">
     <%= t(:answer_this_question, scope: :questions) %>
     <%= render './answers/form' %>
+    <hr/> 
   </div>
 </div>
-<hr/>

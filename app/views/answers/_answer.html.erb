@@ -1,28 +1,32 @@
-<hr>
 <div class="row">
-  <div class="large-2 columns small-3">
+  <hr>
+  <div class="large-1 columns">
     <%= link_to "<i class='fa fa-chevron-up'></i>".html_safe, vote_up_answer_path(answer), remote: true %>
         <h3><div id='votes-for-answer-<%=answer.id%>' ><%= answer.votes_value %></div></h3><br />
     <%= link_to "<i class='fa fa-chevron-down'></i>".html_safe, vote_down_answer_path(answer), remote: true %>
   </div>
-  <div class="large-10 columns">
-    <p><strong><%= answer.user.username %> <%= t(:said) %>:</strong> <%= answer.body %></p>
-
-    <ul class="inline-list">
-      <li>
-        <%= link_to t(:edit, scope: :answers), edit_question_answer_path(answer.question,answer) %>
-      </li>
-      <li>
-        <%= link_to t(:comment, scope: :answers), new_question_answer_answer_comment_path(answer.question, answer) %>
-      </li>
-    </ul>
+  <div class="large-11 columns answer-body">
+    <%= answer.body %>
   </div>
-</div>
-<div class="row">
-  <div class="large-12 columns">
-    <%= t(:comments, scope: :answers) %>
-  </div> 
-  <div class="large-10 columns">
-    <%= render answer.answer_comments %>
+  <div class="large-11 columns">
+    <div class="small-9 columns answer-links">
+     <%= link_to t(:edit, scope: :answers), edit_question_answer_path(answer.question, answer) %>
+    </div>
+    <div class="small-3 columns user-info">
+      <div class="question-time">
+        <%= t(:asked, scope: :questions, time: time_ago_in_words(answer.created_at.to_datetime)) %>
+      </div>
+      <%= answer.user.username %>
+    </div>
+    <div class="large-1 columns">
+    </div>
+    <div class="large-10 columns add-comment">
+      <%= link_to t(:add_comment, scope: :answers), new_question_answer_answer_comment_path(answer.question, answer) %>
+    </div>
+    <div class="large-1 columns">
+    </div>
+    <div class="large-11 columns">
+      <%= render answer.answer_comments %>
+    </div>
   </div>
 </div>

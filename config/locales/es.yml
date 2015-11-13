@@ -39,23 +39,26 @@ es:
     new: "Nueva Pregunta"
     created: "Pregunta creada correctamente"
     answers: "Respuestas"
-    comment: "Comentar esta pregunta"
+    add_comment: "Añadir comentario"
     comments: "Comments"
     edit: "Editar pregunta"
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
+    asked: "Preguntado hace %{time}."
 
   answers:
     sucessfully_edited: "Respuesta editada correctamente"
     sucessfully_created: "Respuesta creada correctamente"
-    edit: "Editar respuesta"
+    edit: "editar"
     comment: "Comentar esta respuesta"
+    add_comment: "Añadir comentario"
 
   comments:
     new: "Nuevo comentario"
     by: "por"
     successfully_created: "Comentario creado con éxito"
+    commented: "hace %{time}"
 
   tags:
     invalid: "Etiqueta no válida"

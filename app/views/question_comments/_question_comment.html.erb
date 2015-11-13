@@ -1,19 +1,12 @@
-<hr>
 <div class="row">
-  <div class="large-2 columns small-3"><img src="http://placehold.it/40x40&text=[img]"/></div>
-  <div class="large-10 columns">
-    <div class="Comment-Body">
+  <div class="large-12 columns">
+    <hr>
+    <div class="comment-body">
       <%= question_comment.body %>
     </div>
-    <div>
-      <%= t(:by, scope: :comments) + " " + question_comment.user.username %>, <%= l question_comment.created_at, format: :long   %>
+    <div class="comment-info">
+      <%= t(:by, scope: :comments, user: question_comment.user.username) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(question_comment.created_at))  %>
     </div>
-    <ul class="inline-list">
-
-      <li>
-        <%= link_to t(:edit, scope: :comments), edit_question_question_comment_path(question_comment.question, question_comment) %>
-      </li>
-    </ul>
   </div>
 </div>
 

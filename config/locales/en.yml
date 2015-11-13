@@ -39,18 +39,24 @@ en:
     new: "New Question"
     created: "Question, successfully created"
     answers: "Answers to this question"
-    comment: "Coment this question"
+    add_comment: "Add comment"
     comments: "Comments"
     successfully_edited: "Questiom successfully edited"
     successfully_created: "Questiom successfully created"
     select_tags: "Select tags (at least one)"
 
   answers:
+    sucessfully_edited: "Answer successfully edited"
+    sucessfully_created: "Answer successfully created"
+    edit: "Edit answer"
+    comment: "comment"
+    add_comment: "Añadir comentario"
 
   comments:
     new: "New Comment"
     by: "by"
     successfully_created: "Comment successfully created"
+    commented: "%{time} ago"
 
   tags:
     invalid: "Invalid tag"
