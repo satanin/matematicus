@@ -27,7 +27,7 @@ class Question < ActiveRecord::Base
   end
 
   def votes_value
-    votes_value = Vote.sum(:value)
+    votes_value = Vote.where(question_id: self.id).sum(:value)
     votes_value.to_s
   end
 

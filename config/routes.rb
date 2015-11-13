@@ -23,8 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'votes/:question_id/vote_up' => 'votes#vote_up', as: 'vote_up'
-  get 'votes/:question_id/vote_down' => 'votes#vote_down', as: 'vote_down'
+  get 'votes/:question_id/vote_up_question' => 'votes#vote_up_question', as: 'vote_up_question'
+  get 'votes/:question_id/vote_down_question' => 'votes#vote_down_question', as: 'vote_down_question'
+  get 'votes/:answer_id/vote_up_answer' => 'votes#vote_up_answer', as: 'vote_up_answer'
+  get 'votes/:answer_id/vote_down_answer' => 'votes#vote_down_answer', as: 'vote_down_answer'
 
   mathjax 'mathjax'
 

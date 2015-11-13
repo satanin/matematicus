@@ -3,4 +3,5 @@ class Vote < ActiveRecord::Base
   VOTE_DOWN= -1
   belongs_to :user
   belongs_to :question
+  belongs_to :answer
 end
