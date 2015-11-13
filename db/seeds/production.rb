@@ -34,33 +34,6 @@ User.create!(
   confirmation_sent_at: Time.now.utc
   )
 
-Question.create!(
-  title: "Matrices y determinantes",
-  body: "This is question's one body",
-  user_id: 1
-  )
-
-
-Answer.create!(
-  body: "Answer's body",
-  question_id: 1,
-  user_id: 2
-  )
-
-Question.create!(
-  title: "Matrices y determinantes",
-  body: "This is question's one body",
-  user_id: 1
-  )
-
-
-Answer.create!(
-  body: "La respuesta",
-  question_id: 1,
-  user_id: 2
-  )
-
-
 Tag.create!(name: "sumas", description: "Preguntas relacionadas con sumas")
 Tag.create!(name: "restas", description: "Preguntas relacionadas con restas")
 Tag.create!(name: "multiplicaciones", description: "Preguntas relacionadas con multiplicaciones")
