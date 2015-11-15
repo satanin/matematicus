@@ -7,6 +7,7 @@ $darker-grey-color: #333333;
 $secondary-font-weight: 400;
 $tag-link-color: #8B1640;
 $tag-link-size: 14px;
+$question-color: #999;
 
 .question-time{
   color: $darker-grey-color;
@@ -26,6 +27,13 @@ $tag-link-size: 14px;
 }
 
 .question-info{
+}
+
+.question-title-text {
+  a {
+
+    color: $question-color;
+  }
 }
 
 .add-comment{
