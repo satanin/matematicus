@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.comment {
+  font-size: .9em;
+}
 
-.comment-body{
+.comment-body{ 
   line-height: 1.2em;
   font-size: 14px;
   padding-right: 12px;
