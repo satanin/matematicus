@@ -48,21 +48,3 @@ $tag-link-size: 14px;
 .user-info{
   background-color: #C7D1E7;
 }
-
-.question-tags{
-  font-size: $tag-link-size;
-  font-weight: $secondary-font-weight;
-}
-
-.question-tags a{
-  color: $tag-link-color;
-}
-
-.tag{
-  margin-left:3px !important;
-}
-
-.fa-tags{
-  padding-top:4px !important;
-  color:$grey-color;
-}
