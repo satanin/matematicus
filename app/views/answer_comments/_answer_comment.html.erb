@@ -1,12 +1,8 @@
 <hr>
 <div class="row">
-  <div class="large-2 columns small-3"><img src="http://placehold.it/40x40&text=[img]"/></div>
-  <div class="large-10 columns comment">
+  <div class="large-12 columns comment">
     <div class="Comment-Body">
-      <%= answer_comment.body %>
-    </div>
-    <div>
-      <%= t(:by, scope: :comments) + " " + answer_comment.user.username %>, <%= l answer_comment.created_at, format: :long   %>
+      <%= answer_comment.body %> - <%= t(:by, scope: :comments) + " " + answer_comment.user.username %>, <%= l answer_comment.created_at, format: :long   %>
     </div>
     <ul class="inline-list">
 
