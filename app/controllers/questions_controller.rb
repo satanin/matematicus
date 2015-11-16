@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
     @question.increase_views
     @answers = @question.answers
     @answer = Answer.new
+    @vote_controls = vote_controls_for_user
   end
 
   def edit
@@ -41,7 +42,6 @@ class QuestionsController < ApplicationController
   end
 
   def tagged
-    puts "*"*20, @tag.name
     @questions = Question.tagged_with @tag
   end
 
@@ -66,5 +66,12 @@ class QuestionsController < ApplicationController
     @tag = Tag.find_by(name: params[:name])
 
     redirect_to root_path, alert: "#{t(:invalid, scope: :tags)}" if @tag.nil?
+  end
+
+  def vote_controls_for_user
+    return 'user_cannot_vote' unless current_user
+    user_vote = @question.votes.find_by(user_id: current_user.id)
+    return 'user_can_vote' if user_vote.nil?
+    return 'user_cannot_vote'
   end
 end

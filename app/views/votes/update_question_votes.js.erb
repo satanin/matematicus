@@ -1,1 +1,2 @@
 $("#votes-for-question-<%= @question.id %>").html('<%= j @question.votes_value %>');
+$("#vote-controls").html("<i class='fa fa-chevron-up'></i><br /><h3><%= j @question.votes_value %></h3><br /><i class='fa fa-chevron-down'></i>");
