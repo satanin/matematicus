@@ -7,7 +7,7 @@ $darker-grey-color: #333333;
 $secondary-font-weight: 400;
 $tag-link-color: #8B1640;
 $tag-link-size: 14px;
-$question-color: #999;
+$question-color: #000;
 
 .question-time{
   color: $darker-grey-color;
@@ -23,6 +23,7 @@ $question-color: #999;
 
 .question-aside {
   font-size: .9em;
+  padding-left: 15px;
 }
 
 .question-row{
@@ -36,7 +37,7 @@ $question-color: #999;
 
 .question-title-text {
   a {
-    font-size: .75em;
+    font-size: .85em;
     color: $question-color;
   }
 }
@@ -60,4 +61,12 @@ $question-color: #999;
 
 .user-info{
   background-color: #C7D1E7;
+}
+
+.fa-chevron-down{
+  margin-top: -3;
+}
+
+.vote-controls{
+  text-align: center;
 }

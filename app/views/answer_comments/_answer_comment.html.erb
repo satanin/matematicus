@@ -1,15 +1,13 @@
-<hr>
 <div class="row">
-  <div class="large-12 columns comment">
-    <div class="Comment-Body">
-      <%= answer_comment.body %> - <%= t(:by, scope: :comments) + " " + answer_comment.user.username %>, <%= l answer_comment.created_at, format: :long   %>
+  <div class="large-12 columns">
+    <hr>
+    <div class="comment-body">
+      <%= answer_comment.body %>
     </div>
-    <ul class="inline-list">
-
-      <li>
-        <%= link_to t(:edit, scope: :comments), edit_question_answer_answer_comment_path(answer_comment.answer, answer_comment.answer,answer_comment) %>
-      </li>
-    </ul>
+    <div class="comment-info">
+      <%= t(:by, scope: :comments, user: answer_comment.user.username) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(answer_comment.created_at))  %>
+    </div>
   </div>
 </div>
+
 

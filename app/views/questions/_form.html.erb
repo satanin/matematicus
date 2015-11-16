@@ -29,14 +29,14 @@
     </li>
     <li class="tab-title">
       <a href="#preview_pane">
-        <%= t(:preview, scope: :answers) %>
+        <%= t(:preview) %>
       </a>
     </li>
   </ul>
   <div class="tabs-content">
     <div class="content active" id="comment_pane">
       <%= f.label :body %>
-      <%= f.text_area :body,id: "MathInput", class:"output" %>
+      <%= f.text_area :body,id: "MathInput", class:"output", rows: "10" %>
     </div>
     <div class="content" id="preview_pane">
       <div class="box" id="box" style="visibility:hidden">

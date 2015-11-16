@@ -11,6 +11,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
+gem 'rails_autolink'
 
 gem 'devise', '~> 3.5.2'
 gem 'omniauth-facebook'

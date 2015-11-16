@@ -6,7 +6,7 @@
   </li>
   <li class="tab-title">
     <a href="#preview_pane">
-      <%= t(:preview, scope: :answers) %>
+      <%= t(:preview) %>
     </a>
   </li>
 </ul>
@@ -14,7 +14,7 @@
   <div class="content active" id="comment_pane">
     <%= form_for ([@question,@answer]) do |f| %>
       <%= f.label :body %>
-      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output" %>
+      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10" %>
       <%= f.submit class:"button" %>
     <% end %>
   </div>

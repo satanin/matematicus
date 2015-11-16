@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  preview: "Previsualizar"
   hello: "Hola Mundo"
   users:
     signin: "Registrarse"
@@ -46,6 +47,9 @@ es:
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
     asked: "Preguntado hace %{time}."
+    answer_this_question: "Añadir respuesta"
+    question: "Pregunta"
+    views: "Visitas %{views}"
 
   answers:
     sucessfully_edited: "Respuesta editada correctamente"
@@ -53,10 +57,11 @@ es:
     edit: "editar"
     comment: "Comentar esta respuesta"
     add_comment: "Añadir comentario"
+    answer: "Respuesta"
 
   comments:
     new: "Nuevo comentario"
-    by: "por"
+    by: "por %{user}"
     successfully_created: "Comentario creado con éxito"
     commented: "hace %{time}"
 
