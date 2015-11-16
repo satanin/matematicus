@@ -4,22 +4,22 @@ class VotesController < ApplicationController
   before_action :set_answer, only: [:vote_up_answer, :vote_down_answer]
 
   def vote_up_question
-    Vote.create(user_id: current_user.id, question_id: @question.id, value: Vote::VOTE_UP )
+    Vote.for_question @question.id, current_user.id, Vote::VOTE_UP
     update_question_view
   end
 
   def vote_down_question
-    Vote.create(user_id: current_user.id, question_id: @question.id, value: Vote::VOTE_DOWN )
+    Vote.for_question @question.id, current_user.id, Vote::VOTE_DOWN
     update_question_view
   end
 
   def vote_up_answer
-    Vote.create(user_id: current_user.id, answer_id: @answer.id, value: Vote::VOTE_UP )
+    Vote.for_answer @answer.id, current_user.id, Vote::VOTE_UP
     update_answer_view
   end
 
   def vote_down_answer
-    Vote.create(user_id: current_user.id, answer_id: @answer.id, value: Vote::VOTE_DOWN )
+    Vote.for_answer @answer.id, current_user.id, Vote::VOTE_DOWN
     update_answer_view
   end
 
