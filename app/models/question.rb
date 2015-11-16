@@ -22,7 +22,6 @@ class Question < ActiveRecord::Base
 
   def self.tagged_with tag
     questions = Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
-    puts "+++"*20, questions
     questions
   end
 
