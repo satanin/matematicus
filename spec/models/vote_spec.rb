@@ -39,4 +39,35 @@ RSpec.describe Vote, type: :model do
 		expect(vote_two.errors.count).to be > 0
 	end
 
+	it "allow to users vote up questions" do
+		votes_value = question.votes_value
+
+		Vote.create(user_id: user.id, question_id: question.id, value: 1)
+
+		expect(question.votes_value.to_i).to eq (votes_value.to_i+1)
+	end
+
+	it "allow to users vote down questions" do
+		votes_value = question.votes_value
+
+		Vote.create(user_id: user.id, question_id: question.id, value: -1)
+
+		expect(question.votes_value.to_i).to eq votes_value.to_i-1
+	end
+
+	it "allow to users vote up answers" do
+		votes_value = answer.votes_value
+
+		Vote.create(user_id: user.id, answer_id: answer.id, value: 1)
+
+		expect(answer.votes_value.to_i).to eq (votes_value.to_i+1)
+	end
+
+	it "allow to users vote down answers" do
+		votes_value = answer.votes_value
+
+		Vote.create(user_id: user.id, answer_id: answer.id, value: -1)
+
+		expect(answer.votes_value.to_i).to eq votes_value.to_i-1
+	end
 end
