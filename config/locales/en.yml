@@ -36,6 +36,8 @@ en:
     user_name: "User"
     questions: "Questions"
     answers: "Answers"
+    updated: "User updated"
+    created: "User created"
 
   questions:
     reply: "Reply"
@@ -74,5 +76,11 @@ en:
 
   notifier:
     answer_created:
-      subject: "%{user_name}  added an answer to your question"
-      hi_user: "Hi %{user_name}"
+      subject: "%{user_name} added an answer to your question"
+      body_header: "%{user_name} added an answer to your question"
+      body: |
+            Hi %{user_name}, %{user_answering} added an answer to one of your questions, click %{link}, to open.
+            
+            Best regards and thank you for using %{page_link}
+      question_link: "here"
+      page: "matematic.us"

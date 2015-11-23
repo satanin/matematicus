@@ -14,7 +14,7 @@
         <li><%= link_to t(:facebook_login, scope: :users), user_omniauth_authorize_path(:facebook) %></li>
         <li><%= link_to t(:google_login, scope: :users), user_omniauth_authorize_path(:google_oauth2) %></li>
       <% else %>
-        <li><%= link_to current_user.username, user_path(current_user) %></li>
+        <li><%= link_to "#{image_tag(current_user.avatar,size:'16')} #{current_user.username}".html_safe, user_path(current_user) %></li>
         <li><%= link_to t(:signout, scope: :users), destroy_user_session_path, method: :delete %></li>
         <li><%= link_to t(:myquestions, scope: :questions), user_questions_path(current_user) %></li>
         <li><%= link_to t(:create, scope: :questions), new_user_question_path(current_user) %></li>

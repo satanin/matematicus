@@ -1,7 +1,16 @@
-<div>
-	<%= t(:profile, scope: :users) %>
+<div class="row">
+  <div class="large-12 columns">
+    <h2><%= t(:profile, scope: :users) %>  <%= link_to("<i class='fa fa-pencil'></i>".html_safe, edit_user_path(@profile)) if user_can_edit_profile @current_user, @profile %></h2>
+  </div>
+  <div class="large-3 columns">
+      <%= image_tag @profile.avatar_url %>
+  </div>
+  <div class="large-6 columns">
+    <div><%= t(:user_name, scope: :users, username:@profile.username) %></div>
+  </div>
+  <div class="large-3 columns">
+    <div class=""><%= t(:questions, scope: :users, questions: @profile.questions.count) %></div>
+    <div class=""><%= t(:answers, scope: :users, answers: @profile.answers.count) %></div>
+    <div class=""><%= t(:comments, scope: :users, comments: @profile.comments) %></div>
+  </div>
 </div>
-<div><%= t(:user_email, scope: :users) + ' : '  %><%= @profile.email %></div>
-<div><%= t(:user_name, scope: :users) + ' : '  %><%= @profile.username %></div>
-<div><%= t(:questions, scope: :users) + ' : '  %><%= @profile.questions.count %></div>
-<div><%= t(:answers, scope: :users) + ' : '  %><%= @profile.answers.count %></div>
