@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     render :edit
   end
 
+  def profile
+    @profile = User.find(params[:user_id])
+  end
+
   private
 
   def user_params
