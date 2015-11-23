@@ -6,7 +6,7 @@
       <%= image_tag @profile.avatar %>
   </div>
   <div class="large-6 columns">
-    <div><%= t(:user_name, scope: :users, username:@profile.username) %></div>
+    <div><%= t(:username, scope: :users, username:@profile.username) %></div>
   </div>
   <div class="large-3 columns">
     <div class=""><%= t(:questions, scope: :users, questions: @profile.questions.count) %></div>
