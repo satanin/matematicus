@@ -32,6 +32,10 @@ es:
     google_login: "Iniciar sesión con Google"
     profile: "Perfil"
     minimum_password_length: "La contraseña debe tener al menos 8 carácteres"
+    user_email: "Email"
+    user_name: "Usuario"
+    questions: "Preguntas"
+    answers: "Respuestas"
 
   questions:
     reply: "Responder pregunta"

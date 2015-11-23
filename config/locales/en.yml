@@ -32,6 +32,10 @@ en:
     google_login: "Sign in with Google"
     profile: "User Profile"
     minimum_password_length: "Password must be at least 8 characters"
+    user_email: "Email"
+    user_name: "User"
+    questions: "Questions"
+    answers: "Answers"
 
   questions:
     reply: "Reply"
