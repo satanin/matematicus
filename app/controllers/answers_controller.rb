@@ -12,7 +12,9 @@ class AnswersController < ApplicationController
 
   def update
     @answer.update!(answer_params)
+    Notifier.answer_created(@answer, @question).deliver_now
     redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :answers)}"
+
     rescue Exception
     render :edit
   end
@@ -22,11 +24,12 @@ class AnswersController < ApplicationController
     @answer.user_id = @user.id
     @answer.question_id = @question.id
 
-    @answer.save!
-    redirect_to question_path(@question)
-
-    rescue Exception
-    render :new
+    if @answer.save!
+      Notifier.answer_created(@answer, @question).deliver_now
+      redirect_to question_path(@question)
+    else
+      render :new
+    end
   end
 
 

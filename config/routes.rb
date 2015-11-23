@@ -79,5 +79,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get "*path", to: redirect('/')
+  #get "*path", to: redirect('/')
 end

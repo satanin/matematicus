@@ -49,6 +49,7 @@ en:
     question: "Question"
     views: "Views %{views}"
 
+
   answers:
     sucessfully_edited: "Answer successfully edited"
     sucessfully_created: "Answer successfully created"
@@ -65,3 +66,8 @@ en:
 
   tags:
     invalid: "Invalid tag"
+
+  notifier:
+    answer_created:
+      subject: "%{user_name}  added an answer to your question"
+      hi_user: "Hi %{user_name}"

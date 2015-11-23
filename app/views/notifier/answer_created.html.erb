@@ -1,0 +1,7 @@
+  <div class="mailer-title">
+    <h3><%= t(:body_header, scope: [:notifier, :answer_created], user_name: @user_answering.username.capitalize) %></h3>
+  </div>
+<div class="mailer-body">
+    <%= simple_format t(:body, scope: [:notifier,:answer_created], user_name: @user.username, user_answering: @user_answering.username, link:link_to(t(:question_link, scope: [:notifier, :answer_created]), question_url(@question.id)), page_link: link_to(t(:page, scope: [:notifier, :answer_created]), root_url)) %>
+  </div>
+</div>

@@ -68,6 +68,16 @@ es:
   tags:
     invalid: "Etiqueta no válida"
 
+  notifier:
+    answer_created:
+      subject: "%{user_name} ha añadido una respuesta a tu pregunta"
+      body_header: "%{user_name} ha añadido una respuesta a tu pregunta"
+      body: |
+            Hola %{user_name}, %{user_answering} ha añadido una respuesta a una de tus preguntas, haz click %{link}, para verla.
+            
+            Un saludo y gracias por usar %{page_link}
+      question_link: "aquí"
+      page: "matematic.us"
   date:
     abbr_day_names:
     - dom
