@@ -52,6 +52,7 @@ en:
     answer_this_question: "Add answer"
     question: "Question"
     views: "Views %{views}"
+    asked: "Asked %{time} ago."
 
   answers:
     sucessfully_edited: "Answer successfully edited"

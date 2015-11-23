@@ -50,7 +50,7 @@ es:
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
-    asked: "Preguntado hace %{time}."
+    asked: "Respondido hace %{time}."
     answer_this_question: "Añadir respuesta"
     question: "Pregunta"
     views: "Visitas %{views}"
