@@ -1,0 +1,7 @@
+<div>
+	<%= t(:profile, scope: :users) %>
+</div>
+<div><%= t(:user_email, scope: :users) + ' : '  %><%= @profile.email %></div>
+<div><%= t(:user_name, scope: :users) + ' : '  %><%= @profile.username %></div>
+<div><%= t(:questions, scope: :users) + ' : '  %><%= @profile.questions.count %></div>
+<div><%= t(:answers, scope: :users) + ' : '  %><%= @profile.answers.count %></div>

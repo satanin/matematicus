@@ -12,7 +12,7 @@
       <div class="question-time">
         <%= t(:asked, scope: :questions, time: time_ago_in_words(answer.created_at.to_datetime)) %>
       </div>
-      <%= answer.user.username %>
+      <%= link_to answer.user.username, user_profile_path(answer.user.id) %>
     </div>
     <div class="large-1 columns">
     </div>

@@ -32,6 +32,10 @@ es:
     google_login: "Iniciar sesión con Google"
     profile: "Perfil"
     minimum_password_length: "La contraseña debe tener al menos 8 carácteres"
+    user_email: "Email"
+    user_name: "Usuario"
+    questions: "Preguntas"
+    answers: "Respuestas"
 
   questions:
     reply: "Responder pregunta"
@@ -46,7 +50,7 @@ es:
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
-    asked: "Preguntado hace %{time}."
+    asked: "Respondido hace %{time}."
     answer_this_question: "Añadir respuesta"
     question: "Pregunta"
     views: "Visitas %{views}"
