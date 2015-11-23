@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'users/:user_id/profile' => 'users#profile', as: 'user_profile'
+
   get 'votes/:question_id/vote_up_question' => 'votes#vote_up_question', as: 'vote_up_question'
   get 'votes/:question_id/vote_down_question' => 'votes#vote_down_question', as: 'vote_down_question'
   get 'votes/:answer_id/vote_up_answer' => 'votes#vote_up_answer', as: 'vote_up_answer'
