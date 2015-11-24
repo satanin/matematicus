@@ -12,4 +12,7 @@ module QuestionsHelper
     question.user == current_user
   end
 
+  def show_question_comments? question
+    question.question_comments.count >=1
+  end
 end

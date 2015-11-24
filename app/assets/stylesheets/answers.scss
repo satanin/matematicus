@@ -4,12 +4,14 @@
 
 $secondary-font-weight: 400;
 $grey-color: #A9A9A9;
+$small-font: 0.85rem;
+$tag-link-color: #8B1640;
 
 .answer-body{
   min-height: 110px;
 }
 
-.answer-links {
+.answer-links .add-answer-comment{
   color: $grey-color;
   font-weight: $secondary-font-weight;
   font-size: 13px;
@@ -17,5 +19,16 @@ $grey-color: #A9A9A9;
 }
 
 .answer-links a{
+  font-size: $small-font;
   color: $grey-color;
 }
+
+.add-answer-comment a{
+  font-size: $small-font;
+  color: $grey-color;
+}
+
+ .add-answer-comment{
+   color:  $tag-link-color;
+   font-size: $small-font;
+ }

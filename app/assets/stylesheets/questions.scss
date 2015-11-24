@@ -46,8 +46,6 @@ $question-color: #000;
   color: $grey-color;
   font-weight: $secondary-font-weight;
   font-size: 13px;
-  margin-bottom: 20px;
-
 }
 
 .add-comment a{
@@ -60,7 +58,7 @@ $question-color: #000;
 }
 
 .user-info{
-  background-color: #C7D1E7;
+  background-color: #D9DCE2;
 }
 
 .fa-chevron-down{
@@ -69,4 +67,9 @@ $question-color: #000;
 
 .vote-controls{
   text-align: center;
+}
+
+.add-question-comment{
+  color: $tag-link-color;
+  font-size: 0.85em;
 }

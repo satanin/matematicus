@@ -13,6 +13,8 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
     @answer = Answer.new
     @vote_controls = vote_controls_for_user
+    @comment = QuestionComment.new
+    @answer_comment = AnswerComment.new
   end
 
   def edit

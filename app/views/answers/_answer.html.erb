@@ -10,19 +10,54 @@
     </div>
     <div class="small-3 columns user-info">
       <div class="question-time">
-        <%= t(:asked, scope: :questions, time: time_ago_in_words(answer.created_at.to_datetime)) %>
+        <%= t(:answered, scope: :questions, time: time_ago_in_words(answer.created_at.to_datetime),link:link_to(answer.user.username, user_profile_path(answer.user.username))).html_safe %>
       </div>
-      <%= link_to answer.user.username, user_profile_path(answer.user.id) %>
     </div>
     <div class="large-1 columns">
     </div>
-    <div class="large-10 columns add-comment">
-      <%= link_to t(:add_comment, scope: :answers), new_question_answer_answer_comment_path(answer.question, answer) %>
+    <div class="large-10 columns add-answer-comment">
+      <%= link_to t(:add_comment, scope: :answers), "#", class:"show-answer#{answer.id}-comment" %>
     </div>
-    <div class="large-1 columns">
+    <div class="large-12 columns add-answer<%= answer.id %>-coment-form" style="display:none">
+      <%= form_for ([@question,answer,@answer_comment]) do |f| %>
+        <% if @answer_comment.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@answer_comment.errors.count, "error") %> prohibited
+              this answer_comment from being saved:
+            </h2>
+            <ul>
+              <% @answer_comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.label :body, t(:add_comment, scope: :questions) %>
+        <%= f.text_area :body %>
+        <%= f.submit class:"button" %>
+      <% end %>
     </div>
-    <div class="large-11 columns">
+    <div class="large-12 columns add-answer-comment login-needed<%= answer.id %>" style="display:none">
+      <%= t(:you_need_to_log_in, scope: :comments) %>
+    </div>
+    <div class="large-12 columns">
       <%= render answer.answer_comments %>
     </div>
   </div>
 </div>
+
+
+<% if current_user %>
+  <script type="text/javascript">
+    $(".show-answer<%= answer.id %>-comment").click(function(){
+      $(".add-answer<%= answer.id %>-coment-form").toggle();    
+    });
+  </script>
+<% else %>
+  <script type="text/javascript">
+    $(".show-answer<%= answer.id %>-comment").click(function(){
+      $(".login-needed<%= answer.id %>").toggle();
+    });
+  </script>
+<% end %>

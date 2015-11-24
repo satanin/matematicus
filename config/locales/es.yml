@@ -54,10 +54,13 @@ es:
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
-    asked: "Respondido hace %{time}."
+    asked: "Preguntado por %{link} hace %{time}."
+    answered: "Respondido por %{link} hace %{time}"
+    username: "%{username}"
     answer_this_question: "Añadir respuesta"
     question: "Pregunta"
     views: "Visitas %{views}"
+    add_comment: "Añade tu comentario"
 
   answers:
     sucessfully_edited: "Respuesta editada correctamente"
@@ -72,6 +75,7 @@ es:
     by: "por %{user}"
     successfully_created: "Comentario creado con éxito"
     commented: "hace %{time}"
+    you_need_to_log_in: "Debes loguearte para poder comentar"
 
   tags:
     invalid: "Etiqueta no válida"
