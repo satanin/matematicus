@@ -14,8 +14,8 @@ end
 
 FactoryGirl.define do
   factory :user do
-    username
-    email
+    sequence(:username) { |n| "person#{n}" }
+    sequence(:email) { |n| "person#{n}@example.com" }
     password Faker::Internet.password(8)
     factory :user_with_questions do
       transient do
