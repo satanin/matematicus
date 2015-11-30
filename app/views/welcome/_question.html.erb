@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-3 columns question-data">
+  <div class="large-4 columns question-data">
     <ul class="inline-list text-center question-aside">
       <li>
         <span><%= t(:votes, scope: :questions) %></span>
@@ -9,12 +9,13 @@
         <span><%= t(:answers, scope: :questions) %></span>
         <p><%= question.answers.count %></p>
       </li>
+      <li class="question-views">
+        <span><%= t(:views, scope: :questions) %></span>
+        <p><%= question.times_viewed %></p>
+      </li>
     </ul>
-    <div class="question-views">
-      <%= t(:views, scope: :questions, views:question.times_viewed) %>
-    </div>
   </div>
-  <div class="large-9 columns">
+  <div class="large-8 columns">
     <div class="question-title-text">
       <h4>
         <%= link_to question.title, question_path(question) %>

@@ -59,7 +59,7 @@ es:
     username: "%{username}"
     answer_this_question: "Añadir respuesta"
     question: "Pregunta"
-    views: "Visitas %{views}"
+    views: "Visitas"
     add_comment: "Añade tu comentario"
 
   answers:
