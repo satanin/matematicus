@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'foundation-rails'
+gem 'foundation_rails_helper'
 gem 'font-awesome-rails'
 gem 'rails_autolink'
 
@@ -18,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'gravtastic'
+gem 'roadie-rails', '~> 1.0'
 
 gem 'mathjax-rails'
 

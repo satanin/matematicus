@@ -13,11 +13,15 @@
     </div>
   <% end %>
 
-  <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <%= f.label :email %>
+
   <%= f.text_field :email, disabled: true %>
+
+  <%= f.check_box :notifications, label: t(:receive, scope: :notifications) %>
+  <div class="explanation">
+    <%= t(:explanation, scope: :notifications) %>
+  </div>
 
   <%= f.submit class:"button btn-sucess" %>
 

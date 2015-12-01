@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'unsubscribe' => 'users#blacklist', as:'blacklist'
   get 'users/profile/:username' => 'users#profile', as: 'user_profile'
 
   get 'votes/:question_id/vote_up_question' => 'votes#vote_up_question', as: 'vote_up_question'

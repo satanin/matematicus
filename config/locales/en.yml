@@ -55,6 +55,7 @@ en:
     question: "Question"
     views: "Views %{views}"
     asked: "Asked %{time} ago."
+    questions: "Tags"
 
 
   answers:
@@ -74,6 +75,14 @@ en:
 
   tags:
     invalid: "Invalid tag"
+    tags: "Tags"
+
+  notifications:
+    disabled: "Email notifications successfully disabled"
+    disable: "Click %{link} to stop receiving this email notifications."
+    link_text: "here"
+    receive: "Receive notifications"
+    explanation: "Receive an email notification when user answers one of your questions"
 
   notifier:
     answer_created:

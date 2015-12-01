@@ -22,10 +22,20 @@ class UsersController < ApplicationController
     @profile = User.find_by(username: params[:username])
   end
 
+  def blacklist
+    crypt = ActiveSupport::MessageEncryptor.new(ENV['KEY']) 
+    user_email = crypt.decrypt_and_verify(params[:email])
+    @user = User.find_by(email: user_email)
+    @user.notifications = false
+    @user.save
+    flash[:success] = "#{t(:disabled, scope: :notifications)}"
+    redirect_to root_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :notifications)
   end
 
   def set_user

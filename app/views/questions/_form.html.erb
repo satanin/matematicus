@@ -19,7 +19,7 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label :title %>
+
   <%= f.text_field :title %>
   <ul class="tabs" data-tab="" id="myTabs">
     <li class="tab-title active">
@@ -35,7 +35,6 @@
   </ul>
   <div class="tabs-content">
     <div class="content active" id="comment_pane">
-      <%= f.label :body %>
       <%= f.text_area :body,id: "MathInput", class:"output", rows: "10" %>
     </div>
     <div class="content" id="preview_pane">
@@ -43,6 +42,6 @@
       <div id="MathOutput" class="output">` `</div>
     </div>
   </div>
-  <%= f.collection_select(:tag_ids,Tag.all,:id,:name, {}, { class:"tag-selector", multiple:"multiple", placeholder:"#{t(:select_tags, scope: :questions)}"}) %>
+  <%= f.collection_select(:tag_ids,Tag.all,:id,:name, {label: t(:tags, scope: :questions)}, { class:"tag-selector", multiple:"multiple", placeholder:"#{t(:select_tags, scope: :questions)}"}) %>
   <%= f.submit class:"button" %>
 <% end %>

@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
 
     if @answer.save!
-      Notifier.answer_created(@answer, @question).deliver_now
+      Notifier.answer_created(@answer, @question).deliver_now if user_notifications?
       flash[:success]=  "#{t(:successfully_created, scope: :answers)}"
       redirect_to question_path(@question)
     else
@@ -50,5 +50,9 @@ class AnswersController < ApplicationController
 
   def set_answer
     @answer = Answer.find(params[:id])
+  end
+
+  def user_notifications?
+    @question.user.notifications
   end
 end

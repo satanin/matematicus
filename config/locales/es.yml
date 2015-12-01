@@ -61,6 +61,7 @@ es:
     question: "Pregunta"
     views: "Visitas"
     add_comment: "Añade tu comentario"
+    tags: "Etiquetas"
 
   answers:
     successfully_edited: "Respuesta editada correctamente"
@@ -79,6 +80,14 @@ es:
 
   tags:
     invalid: "Etiqueta no válida"
+    tags: "Etiquetas"
+
+  notifications:
+    disabled: "Notificaciones por mail desactivadas correctamente"
+    disable: "Click %{link} para desactivar notificaciones por correo."
+    link_text: "aquí"
+    receive: "Recibir notificaciones"
+    explanation: "Recibir una notificacion por email cuando un usuario responde a mi pregunta"
 
   notifier:
     answer_created:
