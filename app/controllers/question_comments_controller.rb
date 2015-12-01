@@ -17,7 +17,8 @@ class QuestionCommentsController < ApplicationController
     @comment.user_id = @user.id
     @comment.question_id = @question.id
     @comment.save!
-    redirect_to question_path(@question), notice: "#{t(:successfully_created, scope: :comments)}"
+    flash[:success]= "#{t(:successfully_created, scope: :comments)}"
+    redirect_to question_path(@question)
 
     rescue Exception
     render :new
@@ -25,7 +26,8 @@ class QuestionCommentsController < ApplicationController
 
   def update
     @comment.update!(comment_params)
-    redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :comments)}"
+    flash[:success]= "#{t(:successfully_edited, scope: :comments)}"
+    redirect_to question_path(@question)
 
     rescue Exception
     render :edit

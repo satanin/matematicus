@@ -22,10 +22,10 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update!(post_params)
-    redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :questions)}"
-
-  rescue Exception
-    render :edit
+    flash[:success]="#{t(:successfully_edited, scope: :questions)}"
+    redirect_to question_path(@question)
+    rescue Exception
+      render :edit  
   end
 
   def new
@@ -37,7 +37,8 @@ class QuestionsController < ApplicationController
     @question.user_id = @user.id
 
     @question.save!
-    redirect_to question_path(@question), notice: "#{t(:created, scope: :questions)}"
+    flash[:success]="#{t(:created, scope: :questions)}"
+    redirect_to question_path(@question)
 
   rescue Exception
     render :new

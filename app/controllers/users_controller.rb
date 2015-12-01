@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update_attributes!(user_params)
-    redirect_to  user_path(@user), notice: "#{t(:updated, scope: :users)}"
+    redirect_to  user_path(@user), flash[:success]=  "#{t(:updated, scope: :users)}"
 
     rescue Exception
     render :edit

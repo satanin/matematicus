@@ -54,8 +54,8 @@ es:
     successfully_edited: "Pregunta editada correctamente"
     successfully_created: "Pregunta creada correctamente"
     select_tags: "Selecciona etiquetas (al menos una)"
-    asked: "Preguntado por %{link} hace %{time}."
-    answered: "Respondido por %{link} hace %{time}"
+    asked: "por %{link} hace %{time}."
+    answered: "por %{link} hace %{time}"
     username: "%{username}"
     answer_this_question: "Añadir respuesta"
     question: "Pregunta"
@@ -63,8 +63,8 @@ es:
     add_comment: "Añade tu comentario"
 
   answers:
-    sucessfully_edited: "Respuesta editada correctamente"
-    sucessfully_created: "Respuesta creada correctamente"
+    successfully_edited: "Respuesta editada correctamente"
+    successfully_created: "Respuesta creada correctamente"
     edit: "editar"
     comment: "Comentar esta respuesta"
     add_comment: "Añadir comentario"

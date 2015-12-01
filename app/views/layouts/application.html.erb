@@ -17,8 +17,8 @@
   <body>
     <%= render 'shared/menu' %>
     <%- flash.each do |k, v| %>
-      <div id="<%= k %>">
-        <%= v %>
+      <div data-alert id="<%= k %>" class="alert-box <%= k %>">
+        <%= v %><%= link_to "<i class='fa fa-close'></i>".html_safe, "#", class:"close" %> 
       </div>
     <% end %>
     <%= yield %>

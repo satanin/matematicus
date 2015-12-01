@@ -13,7 +13,8 @@ class AnswersController < ApplicationController
   def update
     @answer.update!(answer_params)
     Notifier.answer_created(@answer, @question).deliver_now
-    redirect_to question_path(@question), notice: "#{t(:successfully_edited, scope: :answers)}"
+    flash[:success]=  "#{t(:successfully_edited, scope: :answers)}"
+    redirect_to question_path(@question)
 
     rescue Exception
     render :edit
@@ -26,6 +27,7 @@ class AnswersController < ApplicationController
 
     if @answer.save!
       Notifier.answer_created(@answer, @question).deliver_now
+      flash[:success]=  "#{t(:successfully_created, scope: :answers)}"
       redirect_to question_path(@question)
     else
       render :new
