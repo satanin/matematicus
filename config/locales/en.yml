@@ -32,12 +32,14 @@ en:
     google_login: "Sign in with Google"
     profile: "User Profile"
     minimum_password_length: "Password must be at least 8 characters"
+    email: "Email %{email}"
     user_email: "Email"
     user_name: "User"
     questions: "Questions"
     answers: "Answers"
     updated: "User updated"
     created: "User created"
+
 
   questions:
     reply: "Reply"
@@ -48,15 +50,18 @@ en:
     answers: "Answers to this question"
     add_comment: "Add comment"
     comments: "Comments"
+    edit: "Edit question"
     successfully_edited: "Questiom successfully edited"
     successfully_created: "Questiom successfully created"
+    asked: "by %{link} %{time} ago."
+    answered: "by %{link} %{time} ago."
+    username: "%{username}"
     select_tags: "Select tags (at least one)"
     answer_this_question: "Add answer"
     question: "Question"
     views: "Views %{views}"
-    asked: "Asked %{time} ago."
     questions: "Tags"
-
+    tags: "Etiquetas"
 
   answers:
     sucessfully_edited: "Answer successfully edited"
