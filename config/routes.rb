@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'votes/:answer_id/vote_up_answer' => 'votes#vote_up_answer', as: 'vote_up_answer'
   get 'votes/:answer_id/vote_down_answer' => 'votes#vote_down_answer', as: 'vote_down_answer'
 
+  get 'questions/:question_id/select_answer/:answer_id' => 'questions#select_answer', as: 'select_answer'
   mathjax 'mathjax'
 
   # Example of regular route:

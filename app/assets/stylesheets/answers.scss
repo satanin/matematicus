@@ -32,3 +32,21 @@ $tag-link-color: #8B1640;
    color:  $tag-link-color;
    font-size: $small-font;
  }
+
+ .green{
+  color: green;
+ }
+
+ .selected-answer{
+  background-color: #EFEFEF;
+ }
+
+ .answer{
+  border-top: 1px solid #E0E0E0;
+  padding-top: 1em;
+ }
+
+ .select-controls{
+  font-size: 0.7rem;
+  text-transform: uppercase;
+ }

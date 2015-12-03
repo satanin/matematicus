@@ -24,4 +24,18 @@ module AnswersHelper
 
     return html
   end
+
+  def select_answer_controls answer,question, user
+    puts "="*20, user.admin?
+    user_can_vote = user.admin?
+    html = content_tag(:div, class:"large-12 columns select-controls#{answer.id if answer.selected} select-controls", id:"select-answer-#{answer.id}") do
+        concat "<i class='fa fa-check green'>#{t(:select, scope: :answers)}</i>".html_safe if answer.selected
+      end
+
+    if user_can_vote 
+      html = content_tag(:div, class:"large-12 columns select-controls#{answer.id if answer.selected} select-controls", id:"select-answer-#{answer.id}") do
+        concat link_to "<i class='fa fa-check green'>#{t(:select, scope: :answers)}</i>".html_safe, select_answer_path(question, answer), remote: true
+      end
+    end
+  end
 end

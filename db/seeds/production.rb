@@ -4,7 +4,8 @@ User.create!(
   password: "p314e271",
   confirmation_token: nil,
   confirmed_at: Time.now.utc,
-  confirmation_sent_at: Time.now.utc
+  confirmation_sent_at: Time.now.utc,
+  role: 0;
   )
 
 User.create!(
@@ -13,7 +14,8 @@ User.create!(
   password: "12345678",
   confirmation_token: nil,
   confirmed_at: Time.now.utc,
-  confirmation_sent_at: Time.now.utc
+  confirmation_sent_at: Time.now.utc,
+  role: 0;
   )
 
 User.create!(

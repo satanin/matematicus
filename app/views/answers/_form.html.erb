@@ -13,7 +13,7 @@
 <div class="tabs-content">
   <div class="content active" id="comment_pane">
     <%= form_for ([@question,@answer]) do |f| %>
-      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10" %>
+      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10", required: 'required' %>
       <%= f.submit class:"button" %>
     <% end %>
   </div>

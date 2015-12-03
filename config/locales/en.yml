@@ -70,6 +70,7 @@ en:
     comment: "comment"
     add_comment: "Añadir comentario"
     answer: "Answer"
+    select: "Select as correct answer"
 
   comments:
     new: "New Comment"

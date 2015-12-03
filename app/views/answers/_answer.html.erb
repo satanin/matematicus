@@ -1,5 +1,5 @@
-<div class="row">
-  <hr>
+<div class="row <%= 'selected-answer' if answer.selected == true %> answer" id="answer-row<%= answer.id %>">
+  <%= select_answer_controls answer, @question, current_user if current_user %>
   <%= user_can_vote answer %>
   <div class="large-11 columns answer-body">
     <%= auto_link(simple_format(answer.body)) %>
@@ -34,7 +34,7 @@
           </div>
         <% end %>
         <%= f.label :body, t(:add_comment, scope: :questions) %>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, required:'required'%>
         <%= f.submit class:"button" %>
       <% end %>
     </div>
@@ -45,6 +45,7 @@
       <%= render answer.answer_comments %>
     </div>
   </div>
+
 </div>
 
 

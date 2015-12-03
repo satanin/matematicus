@@ -11,6 +11,8 @@ class QuestionsController < ApplicationController
   def show
     @question.increase_views
     @answers = @question.answers
+    @selected_answer = @answers.where(selected: true)
+    @answers = @answers - @selected_answer
     @answer = Answer.new
     @vote_controls = vote_controls_for_user
     @comment = QuestionComment.new
@@ -48,6 +50,20 @@ class QuestionsController < ApplicationController
     @questions = Question.tagged_with @tag
   end
 
+  def select_answer
+    @answer = Answer.find(params[:answer_id])
+    @question = Question.find(params[:question_id])
+
+    clear_previous_answer_for @question
+
+
+    @answer.selected = true
+    @answer.save
+    @answers = @question.answers
+    update_question_view
+  end
+
+
   private
 
   def post_params
@@ -77,4 +93,14 @@ class QuestionsController < ApplicationController
     return 'user_can_vote' if user_vote.nil?
     return 'user_cannot_vote'
   end
+
+  def update_question_view
+    render "questions/update_question"
+  end
+
+  def clear_previous_answer_for question
+    current_answer = question.answers.select { |q| q.selected == true }.first
+    current_answer.update_attribute(:selected,false) if current_answer
+  end
+
 end

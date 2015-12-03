@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
 
+  enum role: [ :admin, :user ]
+  after_initialize :set_default_role, :if => :new_record?
+
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
     if user.nil?
@@ -48,6 +51,11 @@ class User < ActiveRecord::Base
   def avatar
     return self.avatar_url unless self.avatar_url.nil?
     self.gravatar_url(:size => 200, :default => "identicon")
+  end
+
+  def set_default_role
+    self.role = :admin if User.all.count == 1
+    self.role ||= :user
   end
 
 end

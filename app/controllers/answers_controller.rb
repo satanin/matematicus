@@ -35,6 +35,7 @@ class AnswersController < ApplicationController
   end
 
 
+
   private
   def answer_for_question
     @question = Question.find(params[:question_id])
@@ -55,4 +56,5 @@ class AnswersController < ApplicationController
   def user_notifications?
     @question.user.notifications
   end
+
 end
