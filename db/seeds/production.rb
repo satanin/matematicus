@@ -5,7 +5,7 @@ User.create!(
   confirmation_token: nil,
   confirmed_at: Time.now.utc,
   confirmation_sent_at: Time.now.utc,
-  role: 0;
+  role: 0
   )
 
 User.create!(
@@ -15,7 +15,7 @@ User.create!(
   confirmation_token: nil,
   confirmed_at: Time.now.utc,
   confirmation_sent_at: Time.now.utc,
-  role: 0;
+  role: 0
   )
 
 User.create!(
