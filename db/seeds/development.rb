@@ -4,7 +4,18 @@ User.create!(
   password: "p314e271",
   confirmation_token: nil,
   confirmed_at: Time.now.utc,
-  confirmation_sent_at: Time.now.utc
+  confirmation_sent_at: Time.now.utc,
+  role: 0
+  )
+
+User.create!(
+  username: "elreplicante",
+  email: "replymusic@gmail.com",
+  password: "12345678",
+  confirmation_token: nil,
+  confirmed_at: Time.now.utc,
+  confirmation_sent_at: Time.now.utc,
+  role: 0
   )
 
 User.create!(
@@ -24,31 +35,6 @@ User.create!(
   confirmed_at: Time.now.utc,
   confirmation_sent_at: Time.now.utc
   )
-
-Question.new(
-  title: "This is question one",
-  body: "This is question's one body",
-  user_id: 1
-  ).save(validate: false)
-
-QuestionComment.create!(
-  body: "This is a comment for Question one.",
-  question_id: 1,
-  user_id: 2
-  )
-
-Answer.create!(
-  body: "Answer's body",
-  question_id: 1,
-  user_id: 2
-  )
-
-AnswerComment.create!(
-  body: "This is a comment for Answer",
-  answer_id: 1,
-  user_id: 1
-  )
-
 
 Tag.create!(name: "álgebra")
 Tag.create!(name: "conjuntos")
