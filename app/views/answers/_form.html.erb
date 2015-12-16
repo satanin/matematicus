@@ -1,7 +1,5 @@
-<%= t(:answer, scope: :questions) %>
-
 <%= form_for ([@question,@answer]) do |f| %>
-  <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10", required: 'required', onkeyup: "previewPanel()" %>
+  <%= f.text_area :body, label: false, disabled: !current_user, id: "MathInput", class:"output", rows: "10", required: 'required', onkeyup: "previewPanel()" %>
   <%= f.submit class:"button" %>
 <% end %>
 <%= t(:preview) %>

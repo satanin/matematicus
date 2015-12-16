@@ -20,11 +20,11 @@
     </div>
   <% end %>
 
-  <%= f.text_field :title %>
+  <%= f.text_field :title, label: false %>
 
   <%= t(:question, scope: :questions) %>
   <div class="content active" id="comment_pane">
-    <%= f.text_area :body,id: "MathInput", class:"output", rows: "10", onkeyup: "previewPanel()" %>
+    <%= f.text_area :body, label: false, id: "MathInput", class:"output", rows: "10", onkeyup: "previewPanel()" %>
   </div>
   <%= t(:preview) %>
   <hr>
