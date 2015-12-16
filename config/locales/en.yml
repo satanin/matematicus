@@ -79,6 +79,7 @@ en:
     successfully_created: "Comment successfully created"
     commented: "%{time} ago"
     you_need_to_log_in: "You need to log in to comment"
+    edit_comment: "Edit"
 
   tags:
     invalid: "Invalid tag"

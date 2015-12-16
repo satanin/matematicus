@@ -79,6 +79,7 @@ es:
     successfully_created: "Comentario creado con éxito"
     commented: "hace %{time}"
     you_need_to_log_in: "Debes loguearte para poder comentar"
+    edit_comment: "Editar"
 
   tags:
     invalid: "Etiqueta no válida"
