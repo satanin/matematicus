@@ -21,27 +21,15 @@
   <% end %>
 
   <%= f.text_field :title %>
-  <ul class="tabs" data-tab="" id="myTabs">
-    <li class="tab-title active">
-      <a href="#comment_pane">
-        <%= t(:question, scope: :questions) %>
-      </a>
-    </li>
-    <li class="tab-title">
-      <a href="#preview_pane">
-        <%= t(:preview) %>
-      </a>
-    </li>
-  </ul>
-  <div class="tabs-content">
-    <div class="content active" id="comment_pane">
-      <%= f.text_area :body,id: "MathInput", class:"output", rows: "10" %>
-    </div>
-    <div class="content" id="preview_pane">
-      <div class="box" id="box" style="visibility:hidden">
-      <div id="MathOutput" class="output">` `</div>
-    </div>
+
+  <%= t(:question, scope: :questions) %>
+  <div class="content active" id="comment_pane">
+    <%= f.text_area :body,id: "MathInput", class:"output", rows: "10", onkeyup: "previewPanel()" %>
   </div>
+  <%= t(:preview) %>
+  <hr>
+  <div id="MathOutput" class="output">` `</div>
+  <hr>
   <%= f.collection_select(:tag_ids,Tag.all,:id,:name, {label: t(:tags, scope: :questions)}, { class:"tag-selector", multiple:"multiple", placeholder:"#{t(:select_tags, scope: :questions)}"}) %>
   <%= f.submit class:"button" %>
 <% end %>
