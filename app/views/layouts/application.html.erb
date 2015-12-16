@@ -32,14 +32,12 @@
      }
     });
   </script>
-  <script>
-    $('#myTabs').on('toggled', function (event, tab) {
+  <script type="text/javascript">
+    function previewPanel() {
       var preview = $('#MathInput').val();
-      console.log(preview);
-      preview = preview.length ? preview : 'No Comment provided'
-      $('#preview_pane').html(preview)
+      $('#MathOutput').html(preview)
       MathJax.Hub.Typeset();
-    });
+    }
   </script>
   <%= mathjax_tag %>
 </html>
