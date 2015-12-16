@@ -1,3 +1,41 @@
+User.create!(
+  username: "fernandorevilla",
+  email: "fe_rejim@yahoo.es",
+  password: "p314e271",
+  confirmation_token: nil,
+  confirmed_at: Time.now.utc,
+  confirmation_sent_at: Time.now.utc,
+  role: 0
+  )
+
+User.create!(
+  username: "elreplicante",
+  email: "replymusic@gmail.com",
+  password: "12345678",
+  confirmation_token: nil,
+  confirmed_at: Time.now.utc,
+  confirmation_sent_at: Time.now.utc,
+  role: 0;
+  )
+
+User.create!(
+  username: "John Doe",
+  email: "johndoe@test.com",
+  password: "12345678",
+  confirmation_token: nil,
+  confirmed_at: Time.now.utc,
+  confirmation_sent_at: Time.now.utc
+  )
+
+User.create!(
+  username: "Jane Doe",
+  email: "janedoe@test.com",
+  password: "12345678",
+  confirmation_token: nil,
+  confirmed_at: Time.now.utc,
+  confirmation_sent_at: Time.now.utc
+  )
+
 Tag.create!(name: "álgebra")
 Tag.create!(name: "conjuntos")
 Tag.create!(name: "relaciones")
