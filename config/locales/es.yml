@@ -62,6 +62,7 @@ es:
     views: "Visitas"
     add_comment: "Añade tu comentario"
     tags: "Etiquetas"
+    votes: "Votos"
 
   answers:
     successfully_edited: "Respuesta editada correctamente"
@@ -74,7 +75,7 @@ es:
 
   comments:
     new: "Nuevo comentario"
-    by: "por %{user}"
+    by: "por"
     successfully_created: "Comentario creado con éxito"
     commented: "hace %{time}"
     you_need_to_log_in: "Debes loguearte para poder comentar"

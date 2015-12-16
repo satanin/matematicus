@@ -62,6 +62,7 @@ en:
     views: "Views %{views}"
     questions: "Tags"
     tags: "Etiquetas"
+    votes: "Votes"
 
   answers:
     sucessfully_edited: "Answer successfully edited"
@@ -74,7 +75,7 @@ en:
 
   comments:
     new: "New Comment"
-    by: "by %{user}"
+    by: "by"
     successfully_created: "Comment successfully created"
     commented: "%{time} ago"
     you_need_to_log_in: "You need to log in to comment"
