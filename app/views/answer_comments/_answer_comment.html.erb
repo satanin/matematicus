@@ -5,7 +5,8 @@
       <%= answer_comment.body %>
     </div>
     <div class="comment-info">
-      <%= "#{t(:by, scope: :comments)} " %><%= link_to answer_comment.user.username, user_profile_path(answer_comment.user.id) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(answer_comment.created_at))  %>
+      <%= "#{t(:by, scope: :comments)} " %><%= link_to answer_comment.user.username, user_profile_path(answer_comment.user.id) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(answer_comment.created_at))  %> 
+      <%= edit_answer_comment_toggle current_user, answer_comment %>
     </div>
   </div>
 </div>
