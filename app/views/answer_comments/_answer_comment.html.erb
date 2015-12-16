@@ -5,7 +5,7 @@
       <%= answer_comment.body %>
     </div>
     <div class="comment-info">
-      <%= link_to t(:by, scope: :comments, user: answer_comment.user.username), user_profile_path(answer_comment.user.id) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(answer_comment.created_at))  %>
+      <%= "#{t(:by, scope: :comments)} " %><%= link_to answer_comment.user.username, user_profile_path(answer_comment.user.id) %>, <%= t(:commented, scope: :comments, time: time_ago_in_words(answer_comment.created_at))  %>
     </div>
   </div>
 </div>
