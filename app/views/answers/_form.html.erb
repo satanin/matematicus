@@ -1,24 +1,9 @@
-<ul class="tabs" data-tab="" id="myTabs">
-  <li class="tab-title active">
-    <a href="#comment_pane">
-      <%= t(:answer, scope: :questions) %>
-    </a>
-  </li>
-  <li class="tab-title">
-    <a href="#preview_pane">
-      <%= t(:preview) %>
-    </a>
-  </li>
-</ul>
-<div class="tabs-content">
-  <div class="content active" id="comment_pane">
-    <%= form_for ([@question,@answer]) do |f| %>
-      <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10", required: 'required' %>
-      <%= f.submit class:"button" %>
-    <% end %>
-  </div>
-  <div class="content" id="preview_pane">
-  <div class="box" id="box" style="visibility:hidden">
-    <div id="MathOutput" class="output">` `</div>
-  </div>
-</div>
+<%= t(:answer, scope: :questions) %>
+
+<%= form_for ([@question,@answer]) do |f| %>
+  <%= f.text_area :body, disabled: !current_user, id: "MathInput", class:"output", rows: "10", required: 'required', onkeyup: "previewPanel()" %>
+  <%= f.submit class:"button" %>
+<% end %>
+<%= t(:preview) %>
+<hr>
+<div id="MathOutput" class="output">` `</div>
