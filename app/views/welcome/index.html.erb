@@ -14,7 +14,7 @@
   <aside class="large-3 columns hide-for-small">
     <div class="top-lists-data">
     <div>
-        <h5 style="text-align: center;"><%= t(:most_viewed_questions) %></h5>
+        <h5 class="title-ads"><%= t(:most_viewed_questions) %></h5>
     </div>
       <ul class="no-bullet">
         <%= render partial: 'most_viewed_question', collection: @most_viewed_questions %>
@@ -22,7 +22,7 @@
     </div>
     <div class="top-lists-data">
     <div>
-        <h5 style="text-align: center;"><%= t(:most_voted_answers) %></h5>
+        <h5 class="title-ads"><%= t(:most_voted_answers) %></h5>
     </div>
       <ul class="no-bullet">
         <%= render partial: 'most_voted_answer', collection: @most_voted_answers %>
