@@ -22,6 +22,7 @@
 en:
   preview: "Preview"
   hello: "Hello world"
+  most_viewed_questions: "Most Viewed Questions"
   users:
     signin: "Sign In"
     signup: "Sign Up"

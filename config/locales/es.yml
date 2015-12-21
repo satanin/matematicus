@@ -22,6 +22,8 @@
 es:
   preview: "Previsualizar"
   hello: "Hola Mundo"
+  most_viewed_questions: "Preguntas mas visitadas"
+  most_voted_answers: "Respuestas mejor valoradas"
   users:
     signin: "Registrarse"
     signup: "Registrarse"
