@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
 
     if @answer.save!
       Notifier.answer_created(@answer, @question).deliver_now if user_notifications?
-      @question.update_attributes(updated_at: Time.now)
+      @question.update_attributes(answered_at: Time.now)
       flash[:success]=  "#{t(:successfully_created, scope: :answers)}"
       redirect_to question_path(@question)
     else
