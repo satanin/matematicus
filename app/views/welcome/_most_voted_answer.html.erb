@@ -1,0 +1,5 @@
+<li>
+	<%= link_to question_path(most_voted_answer.question) do %>
+		<%= most_voted_answer.votes_value %> - <%= most_voted_answer.body %>
+	<% end %>
+</li>

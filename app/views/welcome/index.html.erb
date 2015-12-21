@@ -12,8 +12,22 @@
   </div>
 
   <aside class="large-3 columns hide-for-small">
-    <p><img src="http://placehold.it/300x440&text=[ad]"/></p>
-    <p><img src="http://placehold.it/300x440&text=[ad]"/></p>
+    <div class="top-lists-data">
+    <div>
+        <h5 style="text-align: center;"><%= t(:most_viewed_questions) %></h5>
+    </div>
+      <ul class="no-bullet">
+        <%= render partial: 'most_viewed_question', collection: @most_viewed_questions %>
+      </ul>
+    </div>
+    <div class="top-lists-data">
+    <div>
+        <h5 style="text-align: center;"><%= t(:most_voted_answers) %></h5>
+    </div>
+      <ul class="no-bullet">
+        <%= render partial: 'most_voted_answer', collection: @most_voted_answers %>
+      </ul>
+    </div>
   </aside>
 
 </div>
