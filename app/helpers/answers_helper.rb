@@ -26,7 +26,6 @@ module AnswersHelper
   end
 
   def select_answer_controls answer,question, user
-    puts "="*20, user.admin?
     user_can_vote = user.admin?
     html = content_tag(:div, class:"large-12 columns select-controls#{answer.id if answer.selected} select-controls", id:"select-answer-#{answer.id}") do
         concat "<i class='fa fa-check green'>#{t(:select, scope: :answers)}</i>".html_safe if answer.selected
@@ -37,5 +36,24 @@ module AnswersHelper
         concat link_to "<i class='fa fa-check green'>#{t(:select, scope: :answers)}</i>".html_safe, select_answer_path(question, answer), remote: true
       end
     end
+  end
+
+  def edit_answer_controls answer
+    html = content_tag(:div,class:"small-9 columns answer-links" ) do
+      concat " "
+    end
+
+    if can_edit? answer
+      html = content_tag(:div,class:"small-9 columns answer-links" ) do
+        concat link_to t(:edit, scope: :answers), edit_question_answer_path(answer.question, answer)
+      end
+    end
+    puts "*"*20, (answer.user.id == current_user.id), answer.user.id, current_user.id, (can_edit? answer)
+    html
+  end
+
+
+  def can_edit? answer
+    answer.user.id == current_user.id
   end
 end

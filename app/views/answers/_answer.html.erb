@@ -5,9 +5,7 @@
     <%= auto_link(simple_format(answer.body)) %>
   </div>
   <div class="large-11 columns">
-    <div class="small-9 columns answer-links">
-     <%= link_to t(:edit, scope: :answers), edit_question_answer_path(answer.question, answer) %>
-    </div>
+    <%= edit_answer_controls answer %>
     <div class="small-3 columns user-info">
       <div class="question-time">
         <%= t(:answered, scope: :questions, time: time_ago_in_words(answer.created_at.to_datetime),link:link_to(answer.user.username, user_profile_path(answer.user.username))).html_safe %>
@@ -33,7 +31,7 @@
             </ul>
           </div>
         <% end %>
-        <%= f.label :body, t(:add_comment, scope: :questions) %>
+
         <%= f.text_area :body, required:'required'%>
         <%= f.submit class:"button" %>
       <% end %>
