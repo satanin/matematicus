@@ -16,35 +16,54 @@ RSpec.describe AnswerCommentsController, type: :controller do
     end
 
     describe "GET #new" do
+      let(:answer_comment_params){ {question_id: real_question.id, answer_id: real_question.answers.first.id} }
+
       it "returns http success" do
-        get :new, question_id: real_question.id, answer_id: real_question.answers.first.id
+        get :new, answer_comment_params
+
         expect(response).to have_http_status(:success)
       end
 
       it "instantiates environment correctly" do
-        get :new, question_id: real_question.id, answer_id: real_question.answers.first.id
+        get :new, answer_comment_params
 
         expect(assigns(:comment)).to_not be nil
       end
     end
 
     describe "POST #create" do
+      let(:answer_comment){ 
+        {
+          body: "Nuevo Body", 
+          user_id: user_commenting, 
+          answer_id: real_question.answers.first.id
+        } 
+      }
+      
+      let(:answer_comment_params){
+        {
+          question_id: real_question.id, 
+          answer_id: real_question.answers.first.id, 
+          answer_comment: answer_comment
+          }
+        }
+
       it "returns http redirection" do
-        post :create, question_id: real_question.id , answer_id: real_question.answers.first.id, answer_comment: { body: "Nuevo Body", user_id: user_commenting, answer_id: real_question.answers.first.id }
+        post :create, answer_comment_params
 
         expect(response.status).to eq 302
       end
 
       it "redirects to question path after comment is saved" do
         comments = AnswerComment.all.count
-        post :create, question_id: user.questions.first.id, answer_id: real_question.answers.first.id,answer_comment: { body: "Nuevo Body", user_id: user_commenting, answer_id: real_question.answers.first.id }
+        post :create, answer_comment_params
 
         expect(AnswerComment.all.count).to eq comments+1
         expect(response).to redirect_to question_path(assigns(:question))
       end
 
       it "instantiates environment correctly" do
-        post :create, question_id: user.questions.first.id, answer_id: real_question.answers.first.id,answer_comment: { body: "Nuevo Body", user_id: user_commenting, answer_id: real_question.answers.first.id }
+        post :create, answer_comment_params
 
         expect(assigns(:user).id).to eq user_commenting.id
         expect(assigns(:comment).body).to eq "Nuevo Body"
@@ -59,41 +78,40 @@ RSpec.describe AnswerCommentsController, type: :controller do
       end
     end
 
-    describe "GET #edit" do
-      it "return http success" do
-        answer_comment = create(:answer_comment, answer: real_question.answers.first)
-        get :edit, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id
+    context 'comment with answers' do
 
-        expect(response.status).to eq 200
-      end
-    end
-
-    describe "PUT #update" do
-
-      it "redirects to question path if persisted" do
-        answer_comment = create(:answer_comment, answer: real_question.answers.first)
-
-        put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: "Test", user_id: user_commenting, answer_id: real_question.answers.first.id }
-
-        expect(response.status).to eq 302
+      before do
+        create(:answer_comment, answer: real_question.answers.first)
       end
 
-      it "edits comment successfully" do
-        answer_comment = create(:answer_comment, answer: real_question.answers.first)
+      describe "GET #edit" do
+        it "return http success" do
+          get :edit, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id
 
-        put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: "Test", user_id: user_commenting, answer_id: real_question.answers.first.id }        
-
-        expect(assigns(:comment).body).to eq "Test"
+          expect(response.status).to eq 200
+        end
       end
 
-      it "redirects to question path if not persisted" do
-        answer_comment = create(:answer_comment, answer: real_question.answers.first)
+      describe "PUT #update" do
 
-        put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: nil, user_id: user_commenting, answer_id: real_question.answers.first.id }
+        it "redirects to question path if persisted" do
+          put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: "Test", user_id: user_commenting, answer_id: real_question.answers.first.id }
 
-        expect(response).to render_template 'edit'
+          expect(response.status).to eq 302
+        end
+
+        it "edits comment successfully" do
+          put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: "Test", user_id: user_commenting, answer_id: real_question.answers.first.id }        
+
+          expect(assigns(:comment).body).to eq "Test"
+        end
+
+        it "redirects to question path if not persisted" do
+          put :update, question_id: real_question.id , answer_id: real_question.answers.first.id, id: real_question.answers.first.answer_comments.first.id, answer_comment: { body: nil, user_id: user_commenting, answer_id: real_question.answers.first.id }
+
+          expect(response).to render_template 'edit'
+        end
       end
-
     end
   end
 end
