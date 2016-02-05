@@ -98,9 +98,8 @@ hr {
 }
 
 .top-lists-data {
-    border-radius: 10px;
     border: 1px solid #666;
-    padding: 20px;
+    padding: 0.5em 0.25em;
     margin-bottom: 10px;
 }
 
@@ -110,4 +109,8 @@ hr {
 
 ol li{
   line-height: 1px;
+}
+
+.content {
+  padding: 1em 0;
 }
