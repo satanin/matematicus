@@ -43,7 +43,6 @@ RSpec.describe QuestionsController, type: :controller do
         get :index
 
         expect(response.status).to eq(200)
-        expect(response).to be_success
       end
 
       it "can access to his questions" do
@@ -61,7 +60,6 @@ RSpec.describe QuestionsController, type: :controller do
         get :new
 
         expect(response.status).to eq(200)
-        expect(response).to be_success
       end
 
       it "can access new question form" do
@@ -113,45 +111,29 @@ RSpec.describe QuestionsController, type: :controller do
         
         expect(response.status).to eq 200
       end
-
     end
 
     describe "PUT #update" do
 
-      describe "when is persisted" do
-        it "responds with http redirection" do
-          put :update, id: new_question.id, question: { title: "This is the new question title", body: "This is the new question body" }
+      let(:question_body) { "This is the new question body" }
+      
+      describe "when params are valid" do
+        let(:question_title) { "This is the new question title" }
+        let(:question_params) { { title: question_title, body: question_body } }
 
-          expect(response.status).to eq 302
-        end
-
-        it "can edit an existing question" do
-          put :update, id: new_question.id, question: { title: "This is the new question title", body: "This is the new question body" }
+        it "redirects to question path" do
+          put :update, id: new_question.id, question: question_params
 
           expect(response).to redirect_to question_path(new_question)
-          expect(assigns(:question).title).to eq "This is the new question title"
-          expect(assigns(:question).body).to eq "This is the new question body"
         end
       end
 
-      describe "when is not persisted" do
+      describe "when params are invalid" do
         it "responds with http success" do
-          put :update, id: new_question.id, question: { title: nil, body: "This is the new question body" }
+          put :update, id: new_question.id, question: { title: nil, body: question_body }
 
           expect(response.status).to eq 200
           expect(response).to render_template 'edit'
-        end
-
-        it "can not edit an existing question" do
-          put :update, id: new_question.id, question: { title: nil, body: "This is the new question body" }
-
-          expect(assigns(:question).errors.size).to_not be 0
-        end
-
-        it "cannot update a question without tag" do
-          put :update, id: new_question.id, question: { title: "Title", body: "Question", tag_ids: [] }
-
-          expect(assigns(:question).errors.size).to_not be 0
         end
       end
     end
@@ -168,10 +150,9 @@ RSpec.describe QuestionsController, type: :controller do
         get :tagged, name: question.tags.first.name
 
         expect(response).to render_template(:tagged)
-        expect(assigns(:questions).count).to be >0
       end
 
-      it "redirects to root path if tag name isn't specified" do
+      it "redirects to root path if tag name doesn't exist" do
         get :tagged, name: "pericodelospalotes"
 
         expect(response).to redirect_to root_path

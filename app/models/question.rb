@@ -10,6 +10,7 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
   validates :tags, presence: true
 
+  MOST_VIEWED_LIMIT = 5
 
   def increase_views
     self.times_viewed += 1
@@ -20,8 +21,8 @@ class Question < ActiveRecord::Base
     user.questions.map{|q| q[:id] }.include?(self.id)
   end
 
-  def self.tagged_with tag
-    questions = Question.order(created_at: :desc).joins(:tags).where('tags.id': tag.id)
+  def self.tagged_with tag_id
+    questions = order(created_at: :desc).joins(:tags).where('tags.id': tag_id)
     questions
   end
 
@@ -31,7 +32,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.most_viewed
-    self.order(times_viewed: :desc).limit(5)
+    self.order(times_viewed: :desc).limit(MOST_VIEWED_LIMIT)
   end
 
   def self.ordered_by_answer_date

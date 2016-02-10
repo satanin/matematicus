@@ -25,9 +25,10 @@ class QuestionsController < ApplicationController
   def update
     @question.update!(post_params)
     flash[:success]="#{t(:successfully_edited, scope: :questions)}"
+
     redirect_to question_path(@question)
-    rescue Exception
-      render :edit  
+  rescue Exception
+    render :edit  
   end
 
   def new
@@ -36,16 +37,15 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.for @user.id, post_params
-    
     flash[:success] = "#{t(:created, scope: :questions)}"
-    redirect_to question_path(@question)
 
+    redirect_to question_path(@question)
   rescue Exception
     render :new
   end
 
   def tagged
-    @questions = Question.tagged_with @tag
+    @questions = Question.tagged_with @tag.id
   end
 
   def select_answer
@@ -74,8 +74,7 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
-
-  rescue Exception
+  rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "#{t(:invalid, scope: :questions)}" if @question.nil?
   end
 
@@ -86,10 +85,14 @@ class QuestionsController < ApplicationController
   end
 
   def vote_controls_for_user
-    return 'user_cannot_vote' unless current_user
-    user_vote = @question.votes.find_by(user_id: current_user.id)
-    return 'user_can_vote' if user_vote.nil?
+    return 'user_can_vote' if can_vote
     return 'user_cannot_vote'
+  end
+
+  def can_vote
+    return false unless current_user
+    user_vote = @question.votes.find_by(user_id: current_user.id)
+    user_vote.nil?
   end
 
   def update_question_view
