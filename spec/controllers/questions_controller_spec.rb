@@ -9,6 +9,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   		it "redirects to login" do
         get :index, user_id: "1"
+        
         expect(response).to redirect_to(new_user_session_path)
   		end
 
@@ -119,7 +120,7 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "responds with http success" do
         get :edit, id: new_question.id
-
+        
         expect(response.status).to eq 200
       end
 

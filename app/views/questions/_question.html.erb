@@ -15,65 +15,71 @@
   </div>
 </div>
 <div class="row question-row">
-  <%= render partial: "#{@vote_controls}",object: question, as: 'question' %>
-  <div class="large-11 columns question-body">
-    <%= auto_link(simple_format(question.body))%>
-  </div>
-  <div class="large-11 columns question-info">
-    <div class="small-9 columns">
-      <ul class="inline-list tags">
-        <li>
-          <i class='fa fa-tags'></i>
-        </li>
-        <%= render question.tags %>
-      </ul>
+  <div class="large-9 columns">
+    <%= render partial: "#{@vote_controls}",object: question, as: 'question' %>
+    <div class="large-11 columns question-body">
+      <%= auto_link(simple_format(question.body))%>
     </div>
-    <div class="small-3 columns user-info">
-      <div class="question-time">
-        <%= t(:asked, scope: :questions, time: time_ago_in_words(question.created_at.to_datetime), link:link_to(question.user.username, user_profile_path(question.user.username))).html_safe %>
+    <div class="large-11 columns question-info">
+      <div class="small-9 columns">
+        <ul class="inline-list tags">
+          <li>
+            <i class='fa fa-tags'></i>
+          </li>
+          <%= render question.tags %>
+        </ul>
       </div>
-    </div>
-    <div class="large-12 columns add-comment">
-      <%= link_to t(:add_comment, scope: :questions), "#", class:"show-question-comment" %>
-    </div>
-    <div class="large-12 columns add-question-coment-form" style="display:none">
-      <%= form_for ([@question,@comment]) do |f| %>
-        <% if @comment.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@comment.errors.count, "error") %> prohibited
-            this comment from being saved:
-          </h2>
-          <ul>
-            <% @comment.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
+      <div class="small-3 columns user-info">
+        <div class="question-time">
+          <%= t(:asked, scope: :questions, time: time_ago_in_words(question.created_at.to_datetime), link:link_to(question.user.username, user_profile_path(question.user.username))).html_safe %>
         </div>
-        <% end %>
-        <%= f.label :body, t(:add_comment, scope: :questions) %>
-        <%= f.text_area :body %>
-
-      <%= f.submit class:"button" %>
-    <% end %>
-    </div>
-    <div class="large-12 columns add-question-comment login-needed<%= question.id %>" style="display:none">
-      <%= t(:you_need_to_log_in, scope: :comments) %>
-    </div>
-    <% if show_question_comments? question %>
-      <div class="large-12 columns">
-        <%= render question.question_comments %>
       </div>
-    <% end %>
+      <div class="large-12 columns add-comment">
+        <%= link_to t(:add_comment, scope: :questions), "#", class:"show-question-comment" %>
+      </div>
+      <div class="large-12 columns add-question-coment-form" style="display:none">
+        <%= form_for ([@question,@comment]) do |f| %>
+          <% if @comment.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@comment.errors.count, "error") %> prohibited
+              this comment from being saved:
+            </h2>
+            <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <%= f.label :body, t(:add_comment, scope: :questions) %>
+          <%= f.text_area :body %>
+
+        <%= f.submit class:"button" %>
+      <% end %>
+      </div>
+      <div class="large-12 columns add-question-comment login-needed<%= question.id %>" style="display:none">
+        <%= t(:you_need_to_log_in, scope: :comments) %>
+      </div>
+      <% if show_question_comments? question %>
+        <div class="large-12 columns">
+          <%= render question.question_comments %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
 </div>
+
 <div class="row">
   <div class="large-12 colums question-count">
     <%= t(:answers, scope: :questions) %> : <%= question.answers.count %>
   </div>
 </div>
+
   <%= render @selected_answer %>
   <%= render @answers %>
+
 <div class="row">
   <hr />
   <div class="large-12 columns">

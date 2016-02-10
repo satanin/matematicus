@@ -30,4 +30,12 @@ class Question < ActiveRecord::Base
     votes_value.to_s
   end
 
+  def self.most_viewed
+    self.order(times_viewed: :desc).limit(5)
+  end
+
+  def self.ordered_by_answer_date
+    self.order(answered_at: :desc)
+  end
+
 end

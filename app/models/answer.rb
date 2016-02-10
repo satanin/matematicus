@@ -13,4 +13,9 @@ class Answer < ActiveRecord::Base
     votes_value.to_s
   end
 
+
+  def self.most_voted
+    self.all.sort_by{ |answer| answer.votes_value }.reverse[0..4]
+  end
+
 end
