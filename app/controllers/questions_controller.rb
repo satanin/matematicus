@@ -35,12 +35,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(post_params)
-    @question.user_id = @user.id
-    @question.answered_at = Time.now
-
-    @question.save!
-    flash[:success]="#{t(:created, scope: :questions)}"
+    @question = Question.for @user.id, post_params
+    
+    flash[:success] = "#{t(:created, scope: :questions)}"
     redirect_to question_path(@question)
 
   rescue Exception

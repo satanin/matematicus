@@ -4,22 +4,19 @@ require 'faker'
 RSpec.describe QuestionsController, type: :controller do
 
 	context "When User is not logged in" do
-
     describe "When GET#index accesed" do
-
   		it "redirects to login" do
         get :index, user_id: "1"
         
         expect(response).to redirect_to(new_user_session_path)
   		end
-
     end
-
   end
 
 
   context "When user is logged id" do
-    let(:user) { create(:user_with_questions, questions_count: 15) }
+    let(:user_questions_count) { 15 }
+    let(:user) { create(:user_with_questions, questions_count: user_questions_count) }
     let(:another_user) { create(:user_with_questions, questions_count: 20)}
     let(:question) { build(:question) }
     let(:new_question) { create(:question)}
@@ -33,13 +30,11 @@ RSpec.describe QuestionsController, type: :controller do
     end
 
     context "When supplied id is not valid" do
-
       it "redirects to root path if supplied id is not a valid id" do
         get :edit, id: 19999
 
         expect(response).to redirect_to root_path
       end
-
     end
 
     describe "GET #index" do
@@ -55,7 +50,7 @@ RSpec.describe QuestionsController, type: :controller do
         get :index
 
         expect(response).to render_template(:index)
-        expect(assigns(:questions).count).to be 15
+        expect(assigns(:questions).count).to be user_questions_count
       end
 
     end
@@ -80,38 +75,33 @@ RSpec.describe QuestionsController, type: :controller do
 
     describe "POST #create" do
 
-      describe "when is persisted" do
+      describe "when params are valid" do
+
+        let(:question_params) { { title: question.title, body: question.body, user_id: user.id, tag_ids: [ tag.id ] } }
         it "responds with http redirection" do
-          post :create, question: { title: question.title, body: question.body, user_id: user.id, tag_ids: [ tag.id ] }
+          post :create, question: question_params
 
           expect(response.status).to be 302
         end
 
-        it "can create new questions" do
-          post :create, question: { title: question.title, body: question.body, user_id: user.id, tag_ids: [ tag.id ] }
+        it "redirects to question path" do
+          post :create, question: question_params
 
-          expect(user.questions.count).to eq 16
           expect(response).to redirect_to question_path(assigns(:question))
         end
       end
 
-      describe "when is not persisted" do
+      describe "when params are invalid" do
         it "responds with http success" do
           post :create, question: { title: nil }
 
           expect(response.status).to be 200
         end
 
-        it "cannot create new question without required field" do
-          post :create, question: { title: nil }
-
-          expect(assigns(:question).errors.size).to_not be 0
-        end
-
-        it "cannot create a question without tag" do
+        it "renders the new question template" do
           post :create, question: { title: "Hi", body: "Question", tag_ids: [] }
 
-          expect(assigns(:question).errors.size).to_not be 0
+          expect(response).to render_template :new
         end
       end
     end

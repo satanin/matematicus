@@ -38,4 +38,12 @@ class Question < ActiveRecord::Base
     self.order(answered_at: :desc)
   end
 
+  def self.for user_id, params
+    question = new(params)
+    question.user_id = user_id
+    question.answered_at = Time.now
+    question.save!
+    question
+  end
+
 end
